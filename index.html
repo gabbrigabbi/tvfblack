@@ -1,0 +1,1563 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Black Week TVF — combo TVF ProRes, TVF Color e Storyflow</title>
+<meta name="description" content="Black Week TVF, de 10 a 17 de novembro: TVF ProRes, TVF Color e Storyflow juntos num combo. Os 100 primeiros compradores do combo concorrem a um iPhone 18 Pro Max.">
+<link rel="icon" href="midia/logo.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tvfblack.tudovirafilme.com.br/">
+<meta property="og:title" content="Black Week TVF: os três produtos num combo e um iPhone 18 Pro Max em sorteio">
+<meta property="og:description" content="TVF ProRes, TVF Color e Storyflow juntos, só de 10 a 17 de novembro. Os 100 primeiros compradores do combo concorrem a um iPhone 18 Pro Max.">
+<meta property="og:image" content="https://tvfblack.tudovirafilme.com.br/midia/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#4D1821">
+<style>
+@font-face{font-family:Burbank;src:url(midia/Burbank.otf);font-display:swap}
+@font-face{font-family:Inter;src:url(midia/inter.woff2) format("woff2");font-weight:100 900;font-display:swap}
+:root{
+  --laranja:#A33649;--creme:#F9EDD8;--claro:#F2EADF;--escuro:#0B0B0C;--grafite:#1A1A1C;
+  --bg:var(--claro);--tx:#141414;--suave:#6f6a63;--linha:rgba(20,20,20,.14);
+  --expo:cubic-bezier(.16,1,.3,1);--g:clamp(16px,4vw,64px)}
+body[data-tema="escuro"]{--bg:var(--escuro);--tx:var(--creme);--suave:#8d877e;--linha:rgba(249,237,216,.14)}
+body[data-tema="grafite"]{--bg:#1c1511;--tx:var(--creme);--suave:#a3968a;--linha:rgba(249,237,216,.14)}
+body[data-tema="marrom"]{--bg:#2a1a10;--tx:var(--creme);--suave:#b59f8c;--linha:rgba(249,237,216,.16)}
+body[data-tema="laranja"]{--bg:#4D1821;--tx:var(--creme);--suave:#dcb9c3;--linha:rgba(249,237,216,.18)}   /* Black Week: a seção "laranja" vira bordô */
+*{box-sizing:border-box;margin:0;padding:0}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{background:var(--bg);color:var(--tx);font-family:Inter,system-ui,sans-serif;font-weight:400;overflow-x:hidden;
+  transition:background-color .9s var(--expo),color .9s var(--expo);-webkit-font-smoothing:antialiased}
+/* galeria presa: o fundo segue a rolagem por uma variável, só enquanto a galeria está ativa (fora dela vale o tema; nada gruda) */
+body.na-galeria{background-color:var(--gfundo,#0B0B0C);transition:color .9s var(--expo)}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--laranja);color:var(--creme)}
+.wrap{padding-inline:var(--g)}
+.fino{font-family:Inter;font-weight:200;letter-spacing:-.04em;text-transform:none}
+.bb{font-family:Burbank,Impact,sans-serif;font-weight:400;text-transform:uppercase;line-height:.88;letter-spacing:.005em}
+.mono{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+.lar{color:var(--laranja)}
+body[data-tema="laranja"] .lar{color:var(--creme)}
+
+/* topografia (linhas de contorno) atrás de tudo */
+#topo-linhas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.9}
+main,header.barra,footer{position:relative;z-index:1}
+
+/* carregamento */
+#carrega{position:fixed;inset:0;z-index:100;background:#0b0b0c url(midia/abertura/fundo-carregando.jpg) center/cover;color:var(--creme)}
+#carrega::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 55% at 50% 50%,rgba(11,11,12,.15),rgba(11,11,12,.75))}
+#logo-c{position:fixed;left:50%;top:50%;width:min(520px,70vw);transform:translate(-50%,-50%);z-index:101;pointer-events:none;will-change:transform,opacity,filter}
+#carrega .n{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;z-index:1;   /* no meio entre o pé do logo e o rodapé */
+  font-family:Inter;font-weight:800;font-size:clamp(24px,2.2vw,32px);letter-spacing:.12em;color:var(--creme);opacity:.9;font-variant-numeric:tabular-nums}
+#carrega .n::after{content:"%";margin-left:.12em;opacity:.55}
+/* saída: o logo vira um buraco na tela de carregamento (máscara invertida) e cresce até revelar a abertura */
+#carrega.janela{-webkit-mask-image:linear-gradient(#000,#000),url(midia/logo.png);mask-image:linear-gradient(#000,#000),url(midia/logo.png);
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-composite:xor;mask-composite:exclude}
+
+/* cursor */
+/* rodada 38: cursor pequeno, só aparece enquanto o mouse mexe; mola com inércia e estica na direção do movimento.
+   Em foto/cartão vira um anel fino; sobre o VISÍVEL vira uma lente (anel maior) que mostra a área que empurra os pontos */
+#cursor{position:fixed;left:0;top:0;z-index:90;pointer-events:none;opacity:0;transition:opacity .45s}
+#cursor.vivo{opacity:1}
+#cursor .bola{position:absolute;left:0;top:0;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;box-sizing:border-box;
+  background:var(--laranja);border:1px solid var(--laranja);will-change:transform;
+  transition:width .55s var(--expo),height .55s var(--expo),margin .55s var(--expo),background-color .35s,border-color .35s}
+#cursor.grande .bola{width:24px;height:24px;margin:-12px 0 0 -12px;background-color:rgba(163,54,73,0)}
+#cursor.lente .bola{width:58px;height:58px;margin:-29px 0 0 -29px;background-color:rgba(163,54,73,.06);border-color:rgba(163,54,73,.75)}
+@media (hover:none){#cursor{display:none}}
+
+/* barra do topo */
+header.barra{position:fixed;left:0;right:0;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px var(--g);pointer-events:none}
+header.barra>*{pointer-events:auto}
+.pilula{display:inline-flex;align-items:center;gap:10px;background:var(--laranja);color:var(--creme);font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  padding:11px 16px;border-radius:10px;transition:transform .6s var(--expo)}
+.barra .pilula,.menu-bt{background:rgba(11,11,12,.28);color:#fff;border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);height:42px}
+.barra .pilula:hover,.menu-bt:hover{background:rgba(11,11,12,.45)}
+/* assinatura fixa no canto inferior esquerdo, como o selo do site de referência */
+.assinatura{position:fixed;left:var(--g);bottom:14vh;z-index:40}   /* na linha do pé do iPhone da abertura */
+.assinatura img{height:clamp(130px,19vh,180px);width:auto;display:block;opacity:.5;filter:drop-shadow(0 2px 12px rgba(0,0,0,.3));transition:transform .7s var(--expo),opacity .4s}
+.assinatura:hover img{transform:rotate(-4deg) scale(1.06);opacity:.85}
+.pilula:hover{transform:translateY(-2px) scale(1.03)}
+.barra .logo{position:absolute;left:50%;top:12px;transform:translateX(-50%);width:clamp(150px,15vw,230px);transition:opacity .4s,translate .7s var(--expo)}
+.barra .logo.sobe{translate:0 -160%;opacity:0;pointer-events:none;transition:opacity .25s cubic-bezier(.7,0,.84,0),translate .25s cubic-bezier(.7,0,.84,0)}   /* some quando começa o texto */
+.barra .logo img{transition:filter .6s}
+
+
+.menu-bt{margin-left:auto;width:42px;height:42px;border-radius:10px;
+  display:grid;place-items:center;cursor:pointer;color:var(--tx)}
+.menu-bt i{display:block;width:16px;height:1.5px;background:currentColor;box-shadow:0 5px 0 currentColor,0 -5px 0 currentColor;transition:transform .5s var(--expo)}
+#menu{position:fixed;inset:0;z-index:45;background:var(--escuro);color:var(--creme);clip-path:inset(0 0 100% 0);transition:clip-path 1s var(--expo);
+  display:flex;flex-direction:column;justify-content:center;padding:var(--g)}
+#menu.aberto{clip-path:inset(0 0 0 0)}
+#menu a{font-family:Burbank,Impact;font-size:clamp(54px,10vw,150px);line-height:.92;text-transform:uppercase;display:block;width:max-content;transition:color .4s,transform .7s var(--expo)}
+#menu a:hover{color:var(--laranja);transform:translateX(18px)}
+#menu a small{font-family:Inter;font-weight:200;font-size:.32em;letter-spacing:0;text-transform:none;margin-left:14px;color:#8d877e}
+
+/* ABERTURA */
+.abertura{height:100svh;min-height:620px;position:relative;overflow:hidden}
+.abertura{touch-action:pan-y}   /* rodada 59: deslizar de lado na abertura mexe no raio-x em vez de rolar */
+#raiox{position:absolute;inset:0;width:100%;height:100%;z-index:2;transform-origin:50% 50%;will-change:transform,filter,clip-path}
+.abertura{background:transparent}
+.brilho2{position:absolute;inset:0;z-index:0;opacity:0;pointer-events:none;
+  background:radial-gradient(ellipse 65% 70% at 80% 12%,rgba(163,54,73,.42),transparent 62%),radial-gradient(ellipse 60% 45% at 14% 62%,rgba(163,54,73,.13),transparent 72%);
+  -webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 98%);mask-image:linear-gradient(180deg,#000 55%,transparent 98%)}   /* esfuma antes do pé: a tela continua na próxima, sem "rodapé" */
+/* duas linhas coladas, centradas na foto; cada linha numa letra só, tudo em maiúsculas */
+.faixas{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;font-size:clamp(20px,2.7vw,52px)}   /* rodada 27: menores, só um detalhe animado */
+.faixas .fx{position:absolute;left:0;right:0;white-space:nowrap;line-height:.9;overflow:visible}
+.faixas .f1{bottom:50%;font-family:Inter;font-weight:300;letter-spacing:-.035em;color:var(--laranja);padding-bottom:.02em}
+.faixas .f2{top:50%;font-family:Burbank,Impact,sans-serif;font-size:1.06em;letter-spacing:.005em;color:var(--creme);padding-top:.04em}
+.faixas .trilha{display:inline-block;will-change:transform}
+.assina{position:absolute;left:50%;top:50%;height:min(66vh,780px,118vw);width:auto;aspect-ratio:961/1637;transform:translate(-50%,-50%);z-index:3;pointer-events:none;overflow:visible;filter:drop-shadow(0 6px 30px rgba(0,0,0,.35))}
+.abertura .sobre{position:absolute;left:0;right:0;top:92px;text-align:center}
+.abertura .sobre .mono{color:var(--suave)}
+.oculto{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* rodada 53: frase do curso logo abaixo do T gigante (computador) e embaixo, no centro (celular) */
+.abertura h1.frase-b{position:absolute;z-index:3;left:calc(var(--fx,40px) + .4vw);top:calc(var(--fy,30vh) + 18px);bottom:auto;right:auto;text-align:left;
+  font-family:Inter;font-weight:300;font-size:clamp(17px,1.7vw,30px);line-height:1.15;letter-spacing:-.01em;color:var(--creme);max-width:15em;
+  text-shadow:0 2px 18px rgba(0,0,0,.35);pointer-events:none}
+.abertura h1.frase-b b{font-weight:700}
+html.versao-a .abertura h1.frase-b{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+/* Black Week: selo da data com moldura dourada brilhando (elementos da capa da campanha) */
+.selo-data{position:absolute;z-index:3;left:50%;bottom:4vh;transform:translateX(-50%);text-align:center;pointer-events:none;white-space:nowrap}
+.selo-data .caixa{display:inline-block;padding:.1em .42em .02em;border:2px solid rgba(255,200,100,.9);border-radius:clamp(22px,2.4vw,40px);font-family:Burbank,Impact;font-size:clamp(120px,13.5vw,260px);line-height:.95;letter-spacing:.01em;
+  background:linear-gradient(180deg,#FFF4CF 8%,#FBCB5C 40%,#E8961C 72%,#8F4508);-webkit-background-clip:text;background-clip:text;color:transparent;
+  box-shadow:0 0 40px rgba(255,168,48,.45),inset 0 0 30px rgba(255,168,48,.2);filter:drop-shadow(0 0 14px rgba(255,168,48,.35))}
+.selo-data .sub{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:14px;font-size:clamp(13px,1.1vw,18px);letter-spacing:.42em;text-transform:lowercase;color:#F9EDD8}
+.selo-data .sub i{display:block;width:clamp(40px,6vw,110px);height:1px;background:linear-gradient(90deg,transparent,#FBCB5C)}
+.selo-data .sub i:last-child{background:linear-gradient(90deg,#FBCB5C,transparent)}
+.barra .logo.escondido{translate:0 -160%;opacity:0;pointer-events:none}
+.abertura h1{position:absolute;left:0;right:0;bottom:7vh;text-align:center;pointer-events:none}
+.abertura h1 .fino{display:block;font-size:clamp(30px,4.2vw,72px);line-height:1}
+.abertura h1 .bb{display:block;font-size:clamp(46px,7.4vw,132px);color:var(--laranja)}
+.abertura .canto{position:absolute;bottom:22px;font-size:11px;color:var(--suave)}
+.abertura .canto.e{left:var(--g)} .abertura .canto.d{right:var(--g);text-align:right}
+.ficha{border:1px solid var(--linha);border-radius:10px;padding:10px 12px;width:auto;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(6px)}
+.ficha b{display:block;font-family:Burbank,Impact;font-weight:400;font-size:26px;color:var(--tx);line-height:1;margin:4px 0 2px;white-space:nowrap}
+@media (max-width:1100px){.abertura .canto{display:none}}
+.dica{display:flex;align-items:center;gap:10px;justify-content:flex-end}
+.dica i{width:40px;height:40px;border-radius:10px;background:var(--laranja);display:grid;place-items:center;font-style:normal;color:var(--creme);font-size:18px}
+
+/* letreiro que corre */
+.mensagem{padding:18vh 0 14vh;position:relative;overflow:hidden}
+.mensagem .rot{text-align:center;margin-bottom:5vh;color:var(--suave)}
+.trilho{white-space:nowrap;line-height:.9;will-change:transform}
+.trilho span{display:inline-block;padding-right:.35em}
+.trilho.t1{font-size:clamp(60px,10vw,170px)}
+.trilho.t2{font-size:clamp(66px,11vw,190px)}
+.mensagem .foto{position:absolute;left:50%;top:50%;width:min(30vw,380px);aspect-ratio:4/5;transform:translate(-50%,-44%);border-radius:6px;overflow:hidden;z-index:2;
+  box-shadow:0 40px 120px rgba(0,0,0,.5)}
+.mensagem .foto img{width:100%;height:120%;object-fit:cover}
+
+/* manifesto */
+.manifesto{padding:8vh var(--g) 6vh;text-align:center}
+.manifesto .rot{color:var(--tx);font-size:clamp(20px,2.4vw,40px);letter-spacing:.08em;line-height:1.1;margin-bottom:4vh}   /* rodada 30: o gatilho do texto, grande o bastante para ser lido */
+.manifesto p{font-family:Burbank,Impact;text-transform:uppercase;font-size:clamp(46px,7.3vw,126px);line-height:.95;max-width:1500px;margin:0 auto}
+.manifesto p .w{opacity:.14;transition:opacity .2s}
+.manifesto p .w.f{font-family:Inter;font-weight:200;letter-spacing:-.05em;text-transform:none;color:var(--laranja)}
+
+/* galeria espalhada */
+.galeria{position:relative;padding:6vh var(--g) 24vh}
+.galeria .item{position:relative;margin-bottom:16vh;will-change:transform}
+.galeria .item .mono{margin-bottom:10px;color:var(--suave)}
+.galeria .moldura{overflow:hidden;border-radius:4px;background:#1a1a1a}
+.galeria .moldura img,.galeria .moldura video{width:100%;height:100%;object-fit:cover;transform:scale(1.18);transition:filter .8s var(--expo)}
+.galeria .item:hover .moldura img{filter:saturate(1.25) contrast(1.05)}
+.i1{width:36vw;margin-left:2vw}.i1 .moldura{aspect-ratio:3/2}
+.i2{width:24vw;margin-left:64vw;margin-top:-34vh}.i2 .moldura{aspect-ratio:2/3}
+.i3{width:44vw;margin-left:24vw}.i3 .moldura{aspect-ratio:3/2}
+.i4{width:21vw;margin-left:4vw;margin-top:-20vh}.i4 .moldura{aspect-ratio:9/16}
+.i5{width:30vw;margin-left:62vw;margin-top:-40vh}.i5 .moldura{aspect-ratio:2/3}
+.i6{width:40vw;margin-left:8vw}.i6 .moldura{aspect-ratio:3/2}
+.i7{width:22vw;margin-left:70vw;margin-top:-30vh}.i7 .moldura{aspect-ratio:9/16}
+.citacao{font-family:Inter;font-weight:200;letter-spacing:-.04em;font-size:clamp(28px,3.6vw,58px);line-height:1.05;max-width:16ch;margin:0 0 16vh 6vw}
+.citacao b{font-weight:600;color:var(--laranja)}
+.citacao small{display:block;margin-top:18px;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--suave)}
+.citacao.d{margin-left:auto;margin-right:8vw;text-align:right}
+
+
+/* galeria horizontal */
+.galeria2{position:relative;--gt:var(--creme);--gs:#a3968a;--gi:0;color:var(--gt)}
+.galeria2 .fixo2{height:100vh;overflow:hidden;display:flex;align-items:center}
+.trilho2{display:flex;align-items:stretch;gap:7vw;padding:0 12vw 0 100vw;height:78vh;will-change:transform;position:relative;left:var(--pre,0px)}
+.gi{flex:none;display:flex;flex-direction:column;margin:0 0 0 var(--ml,0);align-self:flex-start}
+.gi.meio{align-self:center}.gi.baixo{align-self:flex-end}
+.gi figcaption{margin-bottom:10px;color:var(--gs)}
+.gi .mold{overflow:hidden;border-radius:3px;background:#222}
+.gi .mold img,.gi .mold video{width:100%;height:100%;object-fit:cover;transform:scale(1.12);transition:filter .8s var(--expo)}
+.gi.v.alta .mold{height:50vh;aspect-ratio:9/14}.gi.v.media .mold{height:38vh;aspect-ratio:9/14}.gi.v.peq .mold{height:27vh;aspect-ratio:9/14}
+.gi.h.grande .mold{height:40vh;aspect-ratio:16/10}.gi.h.media .mold{height:29vh;aspect-ratio:16/10}
+.gi .mold img,.gi .mold video{filter:grayscale(1) contrast(1.05)}   /* tudo em preto e branco; a cor volta com o mouse em cima */
+.gi:hover .mold img,.gi:hover .mold video{filter:none}
+.frase{width:min(30vw,440px);justify-content:center}
+.frase p{font-family:Inter;font-weight:200;letter-spacing:-.04em;font-size:clamp(26px,2.6vw,46px);line-height:1.08;color:var(--gt)}
+.frase p b{font-weight:600}
+.frase .assin-mini{height:70px;width:auto;margin:22px 0 10px;filter:invert(var(--gi,0)) drop-shadow(0 1px 4px rgba(0,0,0,.2))}
+.frase cite{font-style:normal;color:var(--gs)}
+@media (max-width:860px){.trilho2{gap:12vw;height:74vh}.gi{margin-left:0}.frase{width:72vw}
+  /* rodada 57: versão do celular — cada foto com largura e altura fixas (o iPhone esticava pela proporção) e inteira na tela */
+  .trilho2{gap:9vw;height:auto;min-height:70vh;align-items:center}
+  .gi,.gi.meio,.gi.baixo{align-self:center}
+  .gi.topo{align-self:flex-start}.gi.baixo{align-self:flex-end}
+  .gi.v .mold,.gi.v.alta .mold,.gi.v.media .mold,.gi.v.peq .mold{width:58vw;height:calc(58vw * 14 / 9);aspect-ratio:auto}
+  .gi.v.peq .mold{width:46vw;height:calc(46vw * 14 / 9)}
+  .gi.h .mold,.gi.h.grande .mold,.gi.h.media .mold{width:82vw;height:calc(82vw * 10 / 16);aspect-ratio:auto}
+  .gi .mold img,.gi .mold video{transform:none}
+  .gi figcaption{font-size:10px;margin-bottom:8px}}
+/* foto em tela cheia */
+.foto-cheia{position:relative;z-index:2;height:100vh;overflow:hidden;margin-top:0}   /* rodadas 43/44: 60vh das mãos entrando + 70vh de pausa com o antes/depois parado, para dar tempo de ler */   /* passa por cima do antes/depois preso */
+.fc-moldura{position:absolute;inset:0}
+.fc-moldura img{width:100%;height:100%;object-fit:cover;object-position:36% 50%;display:block}   /* no celular a câmera fica no centro */
+/* duas frentes (rodada 58: sem espaço vazio depois da galeria — o REC sobe colado nela e está no centro quando a galeria some; a rodada 44 tinha 40vh) */
+.frentes{position:relative;z-index:1;min-height:100vh;margin-top:0;overflow:hidden;display:grid;place-items:center;padding:0 var(--g)}
+.frentes .lado{position:absolute;bottom:-40px;padding:40px;height:calc(min(88vh,920px) + 80px);pointer-events:none;-webkit-mask-image:linear-gradient(180deg,#000 58%,transparent 96%);mask-image:linear-gradient(180deg,#000 58%,transparent 96%)}   /* rodada 32: o pé das mãos some em degradê, sem corte. Rodada 41: a máscara recorta tudo fora da caixa, inclusive o desfoque —
+   40 px de folga em volta da imagem (e a posição compensada) para o desfoque não sair quadrado */   /* raio-X 88 e laranja 79: assim os dois iPhones ficam do mesmo tamanho */
+.frentes .lado img{height:100%;width:auto;display:block;will-change:transform}
+.frentes .lado.e{left:-3px;translate:-46% 0}            /* só a metade de dentro aparece */
+.frentes .lado.d{right:-5px;translate:44% 0;height:calc(min(79vh,826px) + 80px);scale:-1 1}   /* invertido: os dois apontam para o centro */
+.frentes .par{display:grid;grid-template-columns:1fr 1fr;gap:3.4vw;width:100%;max-width:1000px;margin:0 auto;position:relative;z-index:1}
+.frentes .ant{text-align:right}.frentes .dep{text-align:left}   /* do centro para as laterais */
+.frentes h2{font-size:clamp(52px,7.6vw,136px)}
+.frentes h2 .fino{display:block;font-size:.5em;line-height:1.1}
+.frentes p{color:var(--tx);opacity:.78;font-size:clamp(15px,1.25vw,19px);line-height:1.5;max-width:350px;margin:18px 0 22px}
+.frentes .ant p{margin-left:auto}
+.seta{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:10px;background:var(--laranja);color:var(--creme);font-size:18px;transition:transform .6s var(--expo)}
+.seta:hover{transform:rotate(-45deg)}
+
+/* módulos (cartões) */
+.modulos{padding:16vh var(--g) 14vh}
+.cab{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:8vh;flex-wrap:wrap}
+.cab h2{font-size:clamp(48px,7vw,124px)}
+.cab h2 .fino{display:block;color:var(--laranja);font-size:.9em;line-height:.95}
+.cab p{max-width:380px;color:var(--suave);font-size:15px;line-height:1.55}
+/* rodada 33: no método, "o método" vira uma linha pequena em cima e "do REC ao cliente" é o título */
+.modulos .cab h2{font-size:clamp(60px,10vw,180px);line-height:.88}
+.modulos .cab h2 .fino{font-size:clamp(22px,.24em,44px);line-height:1;margin-bottom:.5vw;letter-spacing:-.02em}
+.cartoes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+/* rodada 34: cartões de vidro (sem foto). O fundo animado aparece desfocado por trás; contorno laranja fino desenhado
+   em SVG (o clip-path cortaria uma borda de CSS); um brilho atravessa o vidro e o contorno conforme a página rola */
+.cartao{position:relative;aspect-ratio:4/5;overflow:hidden;cursor:pointer;
+  background:linear-gradient(160deg,rgba(249,237,216,.04),rgba(249,237,216,.008) 45%,rgba(163,54,73,.02));
+  backdrop-filter:blur(4px) saturate(130%);-webkit-backdrop-filter:blur(4px) saturate(130%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07);transition:background .8s var(--expo);
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 64px),calc(100% - 64px) 100%,0 100%);border-radius:14px 14px 0 14px}
+.cartao:hover{background:linear-gradient(160deg,rgba(249,237,216,.075),rgba(249,237,216,.02) 45%,rgba(163,54,73,.04))}
+.cartao .contorno{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.cartao .contorno path{fill:none;stroke-width:1;vector-effect:non-scaling-stroke}
+.cartao .contorno .c-base{stroke:var(--laranja);opacity:.55;transition:opacity .8s var(--expo)}
+.cartao:hover .contorno .c-base{opacity:.95}
+/* rodada 35: sem reflexo no vidro (ficou artificial) — vidro fosco com granulado; o brilho fica só no contorno */
+.cartao::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.07;mix-blend-mode:soft-light;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='r'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.3' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23r)'/%3E%3C/svg%3E")}
+/* rodada 36/37: quatro por linha; entre tablet e notebook pequeno, dois (8 = 4 linhas certas); o 9º é o largo */
+.cartoes{display:flex;flex-wrap:wrap;justify-content:center;gap:16px}
+.cartoes .cartao{width:calc((100% - 48px) / 4)}
+@media (max-width:1100px){.cartoes .cartao{width:calc((100% - 16px) / 2)}}
+/* rodada 37: o 9º cartão sozinho na linha vira um cartão largo, de ponta a ponta. À direita, a palavra AUTORIDADE em pontos (rodada 39; antes VISÍVEL)
+   quase apagados; o mouse empurra os pontos (molas) e eles acendem em laranja — o posicionamento constrói autoridade */
+.cartoes .cartao.largo{width:100%;aspect-ratio:auto;height:clamp(360px,34vw,560px)}   /* rodada 40: mais alto, para a palavra ocupar o cartão inteiro */
+.cartao.largo .base{right:auto;width:min(36%,520px)}
+.cartao.largo .base b{font-size:clamp(34px,3.4vw,62px)}
+.cartao.largo ol{font-size:clamp(14px,1.05vw,17px)}
+.cartao.largo .pontos{position:absolute;top:12%;left:2.5%;width:95%;height:50%;z-index:1}
+.cartao.largo .dica{position:absolute;right:90px;bottom:clamp(20px,2vw,30px);color:var(--suave);font-size:10px}
+.cartao .topo{position:absolute;left:clamp(18px,1.6vw,26px);top:clamp(16px,1.5vw,24px);right:clamp(18px,1.6vw,26px);display:flex;justify-content:space-between;color:var(--creme);font-size:clamp(11px,.85vw,13px)}
+.cartao .base{position:absolute;left:clamp(18px,1.6vw,26px);right:60px;bottom:clamp(20px,2vw,30px);color:var(--creme)}
+.cartao .base b{font-family:Burbank,Impact;font-weight:400;font-size:clamp(30px,2.7vw,50px);text-transform:uppercase;line-height:.88;display:block}
+.cartao ol{list-style:none;margin-top:12px;font-size:clamp(13px,.95vw,15px);line-height:1.5;color:#e8dfd0;max-height:0;overflow:hidden;transition:max-height .9s var(--expo)}
+.cartao:hover ol,.cartao.aberto ol{max-height:320px}
+.cartao ol li::before{content:"— ";color:var(--laranja)}
+.cartao>*{z-index:1}
+
+/* vídeo que cresce até a tela cheia */
+/* rodada 45: o vídeo cresce enquanto o módulo 9 sai da tela (não depois); cresce por recorte (clip-path), sem mexer no
+   tamanho da caixa, então fica liso. Cheio, segura um pouco com o título; o fundo vira claro por trás e a próxima parte já abre clara */
+.cinema{height:170vh;position:relative}
+.cinema .fixo{position:sticky;top:0;height:100vh;overflow:hidden}
+.cinema .janela{position:absolute;inset:0;will-change:clip-path}
+.cinema video{width:100%;height:100%;object-fit:cover}
+.cinema .txt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none;color:var(--creme);text-shadow:0 4px 40px rgba(0,0,0,.45)}
+.cinema .txt{z-index:1}
+/* rodada 46: caixa alta e as letras pulam e ficam laranja onde o mouse passa (a mesma animação do "começa agora" do rodapé) */
+.cinema .txt .fino{text-transform:uppercase;letter-spacing:-.02em}
+.cinema .txt .letra{display:inline-block;pointer-events:auto;transition:transform .7s var(--expo),color .4s}
+.cinema .txt .letra:hover{transform:translateY(-12%) rotate(-4deg);color:var(--laranja)}
+.cinema .txt .fino{font-size:clamp(34px,5vw,90px);line-height:1}
+.cinema .txt .bb{font-size:clamp(64px,11vw,200px)}
+
+/* app na prática */
+.pratica{padding:18vh var(--g);display:grid;grid-template-columns:1.2fr 1fr;gap:6vw;align-items:center}
+.pratica .tela{border-radius:10px;overflow:hidden;aspect-ratio:16/9}
+.pratica .tela video{width:100%;height:100%;object-fit:cover}
+.pratica h2{font-size:clamp(40px,5vw,86px);margin:14px 0 26px}
+.pratica h2 .fino{display:block;color:var(--laranja)}
+.pratica .linha{border-top:1px solid var(--linha);padding:18px 0;display:grid;grid-template-columns:60px 1fr;gap:10px}
+.pratica .linha b{display:block;font-family:Burbank,Impact;font-weight:400;font-size:24px;text-transform:uppercase}
+.pratica .linha span{color:var(--suave);font-size:14px;line-height:1.5}
+
+/* rua: vídeos verticais em leque */
+.rua{padding:6vh var(--g) 18vh;text-align:center}
+.rua h2{font-size:clamp(60px,10vw,180px)}
+.rua h2 .fino{color:var(--laranja)}
+.rua p{max-width:520px;margin:20px auto 8vh;color:var(--suave);line-height:1.6}
+.leque{display:flex;justify-content:center;gap:2vw;perspective:1200px}
+.leque .v{width:min(22vw,280px);aspect-ratio:9/16;border-radius:16px;overflow:hidden;will-change:transform;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+a.v{display:block}
+.leque a.v img{transition:transform 1.2s var(--expo)}.leque a.v:hover img{transform:scale(1.05)}
+.leque .v video,.leque .v img{width:100%;height:100%;object-fit:cover;display:block}
+.leque .carta{will-change:transform}
+.leque .carta h3{font-family:Inter;font-weight:200;letter-spacing:-.04em;font-size:clamp(22px,2vw,34px);margin-top:22px;line-height:1}
+.leque .carta h3 b{font-weight:700}
+.leque .carta .mono{color:var(--laranja);margin-top:8px}
+.leque .carta a{display:inline-block;margin-top:6px;font-size:14px;color:var(--suave)}
+
+/* depoimentos */
+.alunos{padding:4vh var(--g) 18vh;text-align:center}
+.alunos h2{font-size:clamp(60px,10vw,180px)}
+.alunos h2 .fino{color:var(--laranja)}
+.depos{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:1240px;margin:8vh auto 0;text-align:left}
+.depo{position:relative;margin:0;padding:clamp(28px,3vw,48px);border:1px solid var(--linha);border-radius:24px;background:rgba(255,255,255,.32)}
+.depo .aspas{position:absolute;top:-.18em;left:.28em;font-family:Burbank,Impact;font-size:clamp(110px,9vw,170px);line-height:1;color:var(--laranja)}
+.depo blockquote{margin:0;font-family:Inter;font-weight:300;font-size:clamp(18px,1.45vw,23px);line-height:1.45;letter-spacing:-.01em}
+.depo blockquote b{font-weight:700}
+.depo blockquote.extra{margin-top:18px;font-size:clamp(15px,1.1vw,17px);color:var(--suave)}
+.depo blockquote.extra b{color:var(--tx)}
+.depo figcaption{margin-top:28px;padding-top:20px;border-top:1px solid var(--linha);display:flex;flex-direction:column;gap:6px}
+.depo figcaption b{font-family:Burbank,Impact;font-weight:400;font-size:28px;text-transform:uppercase;line-height:1}
+.depo figcaption .mono{color:var(--laranja)}
+.alunos .fonte{margin-top:28px;color:var(--suave)}
+
+/* Black Week: combo e prêmios */
+.combo{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--linha);border:1px solid var(--linha);max-width:1100px;margin:0 auto 7vh;text-align:left}
+.combo div{background:var(--bg);padding:26px 22px;transition:background-color .9s var(--expo)}
+.combo b{display:block;font-family:Burbank,Impact;font-weight:400;font-size:clamp(26px,2.4vw,40px);text-transform:uppercase;margin:8px 0 6px;line-height:1}
+.combo span:not(.mono){font-size:14px;line-height:1.5;color:var(--suave)}
+.de{font-size:15px;margin-bottom:clamp(30px,3.4vw,56px);color:var(--suave)}   /* o 797 é muito alto: as letras sobem além da própria caixa */
+.bonus{margin-top:12vh}
+.intro-combo{max-width:640px;margin:-2vh auto 6vh;font-size:clamp(16px,1.3vw,20px);line-height:1.5}
+.combo .vale{display:block;margin-top:14px;text-decoration:line-through;opacity:.8}
+.de s{text-decoration-thickness:1px}
+.parcela{font-size:16px;margin-top:14px;color:var(--suave)}
+.aviso-preco{color:#FBCB5C!important;margin:-18px 0 0;letter-spacing:.12em}
+.avulsos{margin-top:12vh}
+.combo.avulso{margin:3vh auto 0}
+.avulso b{font-size:clamp(22px,1.8vw,30px)!important}
+.av-p{font-family:Burbank,Impact;font-size:clamp(30px,2.6vw,44px);line-height:1;margin:6px 0 14px}
+.av-p s{font-size:.5em;opacity:.55;margin-right:.25em;text-decoration-thickness:1px}
+.avulso a{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:3px}
+.avulsos > p{margin-top:18px;color:var(--suave)}
+.bonus h3{font-size:clamp(44px,6vw,104px);line-height:.9}
+.bonus h3 .fino{display:block;font-size:.42em;line-height:1.2}
+.bonus-g{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:14px;max-width:1240px;margin:6vh auto 0;text-align:left}
+.bonus-g div{border:1px solid rgba(249,237,216,.22);border-radius:20px;padding:clamp(22px,2.4vw,36px)}
+.bonus-g .b-iphone{background:#22060f;color:var(--creme);border-color:rgba(251,203,92,.55)!important;box-shadow:0 0 30px rgba(255,168,48,.18)}
+.bonus-g .b-iphone .so-live{display:block;font-family:inherit;font-size:15px;font-weight:800;text-transform:none;line-height:1.45;margin:12px 0 0;color:#FBCB5C}
+.bonus-g .b-iphone .mono{color:#FBCB5C}
+.bonus-g b{display:block;font-family:Burbank,Impact;font-weight:400;font-size:clamp(30px,2.8vw,48px);text-transform:uppercase;line-height:.95;margin:10px 0 10px}
+.bonus-g span:not(.mono){font-size:15px;line-height:1.5}
+.bonus p{margin-top:24px;color:var(--suave)}
+.incluso-t{margin-top:12vh;color:var(--suave)}
+.incluso-t + .incluso{margin-top:3vh}
+.abertura h1.frase-b b{white-space:nowrap}
+
+/* rodada BW-5: relógio da oferta (muda sozinho com a data) */
+.relogio{margin:4vh 0 5vh}
+.live-t{color:var(--suave);margin-bottom:2vh}
+.contagem{display:flex;justify-content:center;gap:clamp(10px,2.4vw,40px)}
+.contagem div{display:flex;flex-direction:column;align-items:center;min-width:1.2em}
+.contagem b{font-family:Burbank,Impact;font-weight:400;font-size:clamp(64px,9vw,150px);line-height:.85;font-variant-numeric:tabular-nums}
+.contagem .mono{margin-top:8px;color:var(--suave)}
+.contagem .some{display:none}
+.relogio.urgente .live-t{color:#FBCB5C}
+.relogio.urgente .contagem b{background:linear-gradient(180deg,#FFF4CF 8%,#FBCB5C 45%,#E8961C);-webkit-background-clip:text;background-clip:text;color:transparent}
+.bonus-g .b-prazo.encerrado{opacity:.42}
+.bonus-g .b-prazo.encerrado .mono::after{content:" · encerrado"}
+
+/* oferta (laranja) */
+.oferta{padding:18vh var(--g);text-align:center}
+.oferta .mono{color:var(--suave)}
+.oferta h2{font-size:clamp(46px,7vw,120px);margin:18px 0 6vh}
+.oferta h2 .fino{display:block;font-size:.62em;line-height:1.05}
+.preco{font-family:Burbank,Impact;font-size:clamp(120px,22vw,360px);line-height:.8}
+.preco small{font-size:.28em;vertical-align:top;margin-right:.1em}
+.parc{font-size:18px;margin:18px 0 40px}
+.btn-escuro{display:inline-flex;gap:14px;align-items:center;background:var(--creme);color:#4D1821;padding:20px 30px;border-radius:12px;font-weight:800;font-size:14px;letter-spacing:.14em;text-transform:uppercase;transition:transform .6s var(--expo)}
+.btn-escuro:hover{transform:scale(1.05)}
+.seg{margin-top:16px;font-size:13px;color:var(--suave)}
+.cta-meio{margin-top:9vh;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+.cta-meio .pilula{padding:18px 28px;font-size:13px;height:auto}
+.cta-meio .mono{color:var(--suave)}
+/* selo de garantia perto do preço (rodada 53) */
+.garantia{display:inline-flex;align-items:center;gap:16px;margin-top:28px;padding:16px 22px;border:1px solid rgba(249,237,216,.3);border-radius:16px;text-align:left;max-width:520px}
+.garantia svg{flex:none;width:44px;height:44px}
+.garantia b{display:block;font-family:Burbank,Impact;font-weight:400;font-size:26px;text-transform:uppercase;line-height:1}
+.garantia span{display:block;font-size:14px;line-height:1.45;margin-top:4px}
+.incluso{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--linha);margin-top:12vh;text-align:left;border:1px solid var(--linha)}
+.incluso div{background:var(--bg);padding:24px 20px;transition:background-color .9s var(--expo)}
+.incluso b{display:block;font-family:Burbank,Impact;font-weight:400;font-size:22px;text-transform:uppercase;margin:8px 0 6px}
+.incluso span{font-size:13px;line-height:1.5;color:var(--suave)}
+
+/* time */
+.time{padding:18vh var(--g)}
+.pessoas{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pessoa .foto{aspect-ratio:4/5;overflow:hidden;border-radius:6px}
+.pessoa img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);transform:scale(1.04);transition:filter .9s var(--expo),transform 1.4s var(--expo)}
+.pessoa:hover img{filter:none;transform:scale(1.1)}
+.pessoa h3{font-family:Inter;font-weight:200;letter-spacing:-.04em;font-size:clamp(24px,2.4vw,40px);margin-top:16px;line-height:1}
+.pessoa h3 b{font-weight:700}
+.pessoa .mono{color:var(--laranja);margin-top:8px}
+.pessoa a{font-size:13px;color:var(--suave)}
+
+/* dúvidas */
+/* rodada 56: WhatsApp do atendimento TVF (+55 11 93924-6496) */
+.zap{position:fixed;right:var(--g);bottom:22px;z-index:49;display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 18px 0 14px;border-radius:999px;
+  background:rgba(11,11,12,.55);color:#fff;border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:0;translate:0 24px;pointer-events:none;
+  transition:opacity .5s var(--expo),translate .7s var(--expo),background-color .3s}
+.zap.vivo{opacity:1;translate:0 0;pointer-events:auto}
+.zap.vivo.fora{opacity:0;translate:0 24px;pointer-events:none}
+.zap:hover{background:rgba(11,11,12,.75)}
+.zap svg{width:22px;height:22px;color:#25D366;flex:none}
+.faq-zap{margin-top:7vh;display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap}
+.faq-zap span{font-family:Inter;font-weight:200;font-size:clamp(22px,2.2vw,34px);letter-spacing:-.03em}
+.faq-zap .pilula{padding:16px 24px;font-size:13px}
+.faq-zap .pilula svg{width:20px;height:20px}
+.faq{padding:14vh var(--g) 18vh}
+.faq details{border-top:1px solid var(--linha)}
+.faq details:last-child{border-bottom:1px solid var(--linha)}
+.faq summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:70px 1fr 40px;align-items:center;padding:26px 0;gap:10px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary b{font-family:Inter;font-weight:200;letter-spacing:-.04em;font-size:clamp(24px,3vw,48px);line-height:1.05;transition:color .4s}
+.faq summary:hover b{color:var(--laranja)}
+.faq summary i{font-style:normal;font-size:26px;font-weight:200;transition:transform .6s var(--expo)}
+.faq details[open] summary i{transform:rotate(45deg)}
+.faq p{padding:0 0 28px 80px;max-width:820px;color:var(--suave);line-height:1.65}
+
+/* rodapé */
+footer{padding:12vh var(--g) 30px;overflow:hidden}
+.grande{font-size:clamp(70px,13.5vw,260px);line-height:.85}
+.grande .fino{display:block;color:var(--laranja)}
+.grande .letra{display:inline-block;transition:transform .7s var(--expo),color .4s}
+.grande .letra:hover{transform:translateY(-12%) rotate(-4deg);color:var(--laranja)}
+.rodape{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;margin-top:10vh;padding-top:24px;border-top:1px solid var(--linha);font-size:13px;color:var(--suave)}
+.rodape div{display:flex;flex-direction:column;gap:8px}
+.rodape b{color:var(--tx);font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:6px}
+
+/* entradas */
+.sobe{opacity:0;transform:translateY(40px)}
+.letras .l{display:inline-block;transform:translateY(105%)}
+.letras{overflow:hidden;display:block;padding-top:.08em;margin-top:-.08em}
+
+@media (max-width:860px){
+  .i1,.i2,.i3,.i4,.i5,.i6,.i7{width:auto;margin:0 0 9vh!important}
+  .i2,.i5{width:62vw;margin-left:auto!important}.i4,.i7{width:52vw}
+  .pratica{grid-template-columns:1fr}
+  .frentes{place-items:start center;padding-top:16vh}.frentes .par{gap:5vw}.frentes p{font-size:14px}
+  .frentes .lado{height:calc(58vh + 80px)}.frentes .lado.d{height:calc(52vh + 80px)}.frentes .lado.e{translate:-52% 0}.frentes .lado.d{translate:50% 0}
+  .cartoes,.pessoas{grid-template-columns:1fr}
+  /* rodada 57: dois cards lado a lado; o 9 (autoridade) na largura dos dois; tocar num card abre ele na largura toda com as aulas */
+  .cartoes{gap:10px}
+  .cartoes .cartao{width:calc((100% - 10px) / 2);aspect-ratio:3/4}
+  .cartao .topo{left:12px;right:12px;top:12px;font-size:9px;letter-spacing:.06em}
+  .cartao .base{left:12px;right:12px;bottom:14px}
+  .cartao .base b{font-size:21px}
+  .cartao ol{font-size:13px;line-height:1.45}
+  .cartoes .cartao.aberto{width:100%;aspect-ratio:1/1}
+  .cartoes .cartao.aberto .base b{font-size:30px}
+  .cartoes .cartao.largo,.cartoes .cartao.largo.aberto{width:100%;height:auto;aspect-ratio:16/11}
+  .cartao.largo .base{width:auto;right:12px}.cartao.largo .base b{font-size:26px}
+  .cartoes .cartao.largo.aberto{aspect-ratio:1/1}
+  .cartao.largo .pontos{top:13%;left:2.5%;right:auto;width:95%;height:44%}.cartao.largo .dica{display:none}
+  .incluso{grid-template-columns:1fr 1fr}
+  .depos{grid-template-columns:1fr;margin-top:6vh}
+  .combo,.bonus-g{grid-template-columns:1fr}
+  .leque{flex-direction:column;align-items:center;gap:6vh}.leque .v{width:62vw;border-radius:12px}
+  .mensagem .foto{width:52vw}
+  .faq summary{grid-template-columns:40px 1fr 30px}.faq p{padding-left:0}
+  .barra .logo{width:132px}
+  .zap{width:52px;height:52px;padding:0;justify-content:center;bottom:18px}.zap span{display:none}.zap svg{width:26px;height:26px}
+  .selo-data{bottom:8vh}.selo-data .caixa{font-size:104px;border-radius:22px}.selo-data .sub{font-size:11px;letter-spacing:.32em;gap:10px}
+  .abertura h1.frase-b{left:0;right:0;top:auto;bottom:calc(8vh + 168px);text-align:center;margin:0 auto;font-size:19px;max-width:none;padding:0 var(--g);text-shadow:0 2px 14px rgba(0,0,0,.6)}
+  .barra .pilula{display:none}
+  .assinatura img{height:110px}
+  .assinatura{bottom:10vh}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* rodada BW-8: as 3 páginas numa só (TVF ProRes, Storyflow, TVF Color) */
+.parte-capa{padding:12vh var(--g) 0}
+.parte-cab{text-align:center;max-width:980px;margin:0 auto 8vh}
+.parte-cab h2{font-size:clamp(64px,11vw,200px);margin:18px 0 22px}
+.parte-cab h2 .fino{display:block;font-size:clamp(18px,1.9vw,30px);line-height:1.2;letter-spacing:-.01em;color:var(--laranja);margin-bottom:.4em}
+.parte-cab p{max-width:620px;margin:0 auto;color:var(--suave);font-size:clamp(16px,1.25vw,19px);line-height:1.55}
+.produto{padding:10vh var(--g) 8vh;border-top:1px solid var(--linha)}
+.produto figure{margin:0;border-radius:18px;overflow:hidden}
+.produto figure img,.produto figure video{width:100%;height:100%;object-fit:cover;display:block}
+.sf-topo{display:grid;grid-template-columns:1.3fr 1fr;gap:5vw;align-items:center;max-width:1240px;margin:0 auto}
+.dores ul{list-style:none;margin:20px 0 0}
+.dores li{padding:14px 0;border-top:1px solid var(--linha);font-size:16px;line-height:1.45}
+.dores li::before{content:"×";color:var(--laranja);margin-right:12px;font-weight:700}
+.virada{margin-top:26px;font-family:Burbank,Impact;font-size:clamp(28px,2.4vw,40px);text-transform:uppercase;line-height:.95}
+.pilares{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1240px;margin:8vh auto 0}
+.pilar{border:1px solid var(--linha);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.pilar img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.pilar > div{padding:22px 22px 26px}
+.pilar b{display:block;font-family:Burbank,Impact;font-weight:400;font-size:clamp(28px,2.4vw,38px);text-transform:uppercase;margin:8px 0 10px;line-height:1}
+.pilar ul{list-style:none}
+.pilar li{font-size:14px;line-height:1.5;color:var(--suave);padding:5px 0}
+.sf-preco{display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center;max-width:1240px;margin:8vh auto 0}
+.sf-preco p{font-size:clamp(18px,1.5vw,24px);line-height:1.45;margin-top:14px}
+.sf-preco .nota{font-size:11px;line-height:1.8;color:var(--suave)}
+.cl-videos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1000px;margin:0 auto}
+.cl-videos figure{aspect-ratio:9/16}
+.cl-leg{text-align:center;margin-top:18px;color:var(--suave)}
+.cl-luts{text-align:center;margin:7vh auto 0;max-width:1200px}
+.parte-cab h2 sup{font-size:.28em;vertical-align:top;line-height:1;margin-left:.04em}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:20px}
+.chips span{font-family:Burbank,Impact;font-size:clamp(22px,2vw,32px);text-transform:uppercase;padding:10px 20px 6px;border:1px solid var(--linha);border-radius:999px}
+.cl-versoes{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--linha);border:1px solid var(--linha);max-width:1100px;margin:8vh auto 0}
+.cl-versoes div{background:var(--bg);padding:24px 22px;transition:background-color .9s var(--expo)}
+.cl-versoes b{display:block;font-family:Burbank,Impact;font-weight:400;font-size:clamp(26px,2.2vw,36px);text-transform:uppercase;margin:8px 0 6px;line-height:1}
+.cl-versoes span:not(.mono){font-size:14px;line-height:1.5;color:var(--suave)}
+.cl-onde{text-align:center;margin:5vh auto 0;max-width:560px;color:var(--suave);line-height:1.6}
+.cl-onde b{color:var(--tx)}
+@media (max-width:860px){
+  .sf-topo,.sf-preco,.pilares,.cl-versoes{grid-template-columns:1fr}
+  .cl-videos{grid-template-columns:repeat(3,1fr);gap:8px}
+  .cl-videos figure{border-radius:10px}
+  .produto{padding:9vh var(--g) 7vh}
+  .pilar img{aspect-ratio:16/9}
+  .sf-preco figure{display:none}
+  .sf-preco{margin-top:5vh}
+}
+
+/* BW-11 (pedido dele, 10/11): Storyflow em fundo claro; título "STORYFLOW" em pontos com a física do módulo 9 (maior);
+   os 3 pilares no formato dos cartões dos módulos, com a foto ocupando o cartão — no mouse (ou toque) a foto encolhe
+   para a metade de cima e a lista sobe na metade de baixo */
+#storyflow .parte-cab{max-width:1240px}
+.leitor{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.sf-titulo .pontos{display:block;width:100%;height:clamp(140px,19vw,320px);margin:1vh auto 0;touch-action:pan-y}
+.sf-dica{display:block;color:var(--suave);font-size:10px;margin:-1vh 0 3vh}
+@media (hover:none){.sf-dica{display:none}}
+.cartoes.pilares{display:flex;max-width:1240px;margin:8vh auto 0}
+.cartoes.pilares .cartao{width:calc((100% - 32px) / 3);aspect-ratio:4/5}
+.cartao.foto{background:#141212;backdrop-filter:none;-webkit-backdrop-filter:none}
+.cartao.foto:hover{background:#141212}
+.cartao.foto .fundo{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;z-index:0;
+  transition:height .9s var(--expo),filter .9s var(--expo)}
+.cartao.foto::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,0) 26%,rgba(0,0,0,0) 46%,rgba(0,0,0,.82) 100%);transition:opacity .9s var(--expo)}
+.cartao.foto:hover .fundo,.cartao.foto.aberto .fundo{height:50%}
+.cartao.foto:hover::after,.cartao.foto.aberto::after{opacity:.55}
+.cartao.foto .base b{font-size:clamp(34px,3vw,54px)}
+.cartao.foto ol{font-size:clamp(14px,1.05vw,16px)}
+@media (max-width:860px){
+  .cartoes.pilares{flex-direction:column;gap:12px}
+  .cartoes.pilares .cartao,.cartoes.pilares .cartao.aberto{width:100%;aspect-ratio:1/1}
+  .cartao.foto .base b{font-size:30px}
+  .sf-titulo .pontos{height:clamp(90px,24vw,160px)}
+}
+
+/* BW-12 (pedido dele, 10/11, referência do capacete): o TVF Color vira uma PASTA escura com aba no meio do topo,
+   sobre o fundo claro do Storyflow; o fundo em volta desce num degradê do claro ao preto até a oferta */
+.produto.cor{border-top:0;padding:7vh clamp(8px,1vw,14px) 0;position:relative;z-index:2}
+/* BW-13 (pedido dele, 10/11): o Storyflow para no fim e a pasta do TVF Color sobe por cima, como uma página nova;
+   o Storyflow some e escurece até o preto antes da pasta tomar a tela. As cores do Storyflow ficam presas no claro
+   (o fundo da página já vira escuro no meio da subida e o texto não pode trocar de cor junto) */
+#storyflow{position:relative;z-index:1;--tx:#141414;--suave:#6f6a63;--linha:rgba(20,20,20,.14);color:var(--tx)}
+.sf-escuro{position:absolute;inset:-2px;background:var(--escuro);opacity:0;pointer-events:none;z-index:5}
+.pasta{position:relative;margin-top:var(--aba);padding:9vh var(--g) 10vh;color:var(--creme);
+  --aba:58px;--tx:var(--creme);--suave:#8d877e;--linha:rgba(249,237,216,.14);--bg:var(--escuro)}
+.pasta>*{position:relative;z-index:1}
+.pasta .pasta-forma{position:absolute;left:0;top:calc(var(--aba) * -1);width:100%;height:calc(100% + var(--aba));z-index:0;overflow:visible}
+.pasta .pasta-forma path{fill:var(--escuro)}
+.pasta-aba{position:absolute;left:0;right:0;top:calc(var(--aba) * -1 + 22px);text-align:center;color:var(--laranja);font-size:12px}
+.pasta .parte-cab{margin-top:0}
+@media (max-width:860px){.pasta{--aba:40px;padding:7vh var(--g) 8vh}.pasta-aba{top:calc(var(--aba) * -1 + 15px);font-size:10px}}
+
+/* BW-14 (pedido dele, 10/11): valores em fundo claro, "combo BLACK WEEK" grande com letras animadas, cards no estilo da
+   galeria de capacetes do Lando Norris e a ancoragem nova dos sócios (masterclass R$ 697, TVF ProRes R$ 1.297...) */
+.of-titulo{margin:2vh 0 5vh;line-height:.8}
+.of-titulo span{display:block}
+.of-titulo .of-l1{font-size:clamp(56px,8vw,150px);color:var(--laranja)}
+.of-titulo .of-l2{font-size:clamp(84px,17.5vw,330px)}
+.of-titulo .pal{display:inline-block;white-space:nowrap}
+.of-titulo .letra{display:inline-block;overflow:hidden;padding-top:.06em;margin-top:-.06em;transition:transform .7s var(--expo),color .4s;cursor:default}
+.of-titulo .letra:hover{transform:translateY(-12%) rotate(-4deg);color:var(--laranja)}
+.of-titulo .of-l1 .letra:hover{color:var(--tx)}
+.of-titulo .li{display:inline-block}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1180px;margin:0 auto 9vh;text-align:left;align-items:start;perspective:1200px}
+.trio .prod:nth-child(2){margin-top:11vh}
+.prod{position:relative;aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:#0E0D0D;color:var(--creme);
+  box-shadow:0 40px 70px -40px rgba(20,10,10,.55);border:1px solid rgba(249,237,216,.08)}
+.prod-vis{position:absolute;inset:0}
+.prod .marca{position:absolute;left:50%;top:40%;width:60%;translate:-50% -50%;transition:transform 1s var(--expo),opacity .6s var(--expo)}
+.prod .marca.sf{width:66%;filter:brightness(2.4) saturate(.5)}
+.prod .marca.cl{width:76%;mix-blend-mode:screen}
+.prod .foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.14);transition:opacity .7s var(--expo),transform 1.3s var(--expo)}
+.prod::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.5),rgba(0,0,0,0) 24%,rgba(0,0,0,0) 48%,rgba(0,0,0,.86));opacity:0;transition:opacity .7s var(--expo)}
+.prod:hover .foto,.prod.ver .foto{opacity:1;transform:scale(1)}
+.prod:hover .marca,.prod.ver .marca{opacity:0;transform:scale(.84)}
+.prod:hover::after,.prod.ver::after{opacity:1}
+.prod-topo{position:absolute;left:22px;right:22px;top:20px;display:flex;justify-content:space-between;font-size:12px;z-index:2}
+.oferta .prod-topo.mono{color:rgba(249,237,216,.72)}
+.prod-base{position:absolute;left:22px;right:22px;bottom:24px;z-index:2}
+.prod-base b{display:block;font-family:Burbank,Impact;font-weight:400;font-size:clamp(36px,3.4vw,60px);text-transform:uppercase;line-height:.9}
+.prod-base span{display:block;margin-top:10px;font-size:14px;line-height:1.5;color:#e2d8c8}
+.soma{max-width:620px}
+.oferta .soma-l em{display:block;font-style:normal;font-size:10px;color:var(--laranja);margin-top:4px}
+.soma-l.inc b{font-family:Burbank,Impact;font-weight:400;font-size:1.3em;text-transform:uppercase;color:var(--laranja)}
+.soma-l.encerrado{opacity:.4}
+.soma-l.encerrado em::after{content:" · encerrada"}
+.oferta .soma-l i{border-bottom-color:rgba(20,20,20,.28)}
+.oferta .aviso-preco,.oferta .bw-t{color:var(--laranja)!important}
+.oferta .btn-escuro{background:var(--laranja);color:var(--creme)}
+.oferta .garantia{border-color:var(--linha)}
+.oferta .bonus-g div{border-color:var(--linha)}
+.oferta .relogio.urgente .live-t{color:#B8660C}
+.produto.cor{padding-bottom:4vh}
+@media (max-width:860px){
+  .trio{grid-template-columns:1fr;gap:12px}
+  .trio .prod:nth-child(2){margin-top:0}
+  .prod{aspect-ratio:1/1}
+  .prod-base b{font-size:34px}
+}
+
+/* BW-15 (pedido dele, 10/11): preço, contagem (maior) e garantia no dourado do selo 10.11 da abertura, versão para fundo claro
+   (o creme do topo do degradê sumiria no claro); os cards do combo levam para a parte de cada produto */
+.prod-ir{display:block;margin-top:14px;font-style:normal;font-size:11px;color:var(--creme);opacity:.75}
+.prod:hover .prod-ir{opacity:1}
+
+/* BW-15: 1ª tela da Black Week — sem roxo e sem TVF gigante; prêmios em volta do iPhone (convite premium da masterclass
+   e o cartão dos equipamentos; a foto dos equipamentos entra quando ele mandar) */
+.brilho2{background:radial-gradient(ellipse 65% 70% at 80% 12%,rgba(251,203,92,.10),transparent 62%),radial-gradient(ellipse 60% 45% at 14% 62%,rgba(249,237,216,.05),transparent 72%)}
+.abertura h1.frase-b{left:calc(var(--cel-x,60vw) + 2vw);top:calc(var(--cel-y,50vh) - 10px);font-size:clamp(15px,1.25vw,22px);max-width:none;color:#F9EDD8}
+.abertura h1.frase-b b{display:inline-block;white-space:nowrap;font-family:Burbank,Impact;font-weight:400;font-size:2.1em;line-height:.95;text-transform:uppercase;
+  background-image:linear-gradient(180deg,#FFF4CF 8%,#FBCB5C 45%,#E8961C 80%,#8F4508);-webkit-background-clip:text;background-clip:text;color:transparent}
+.premios-1{position:absolute;inset:0;z-index:3;pointer-events:none}
+.selo-data .caixa{font-size:clamp(86px,8.6vw,170px)}   /* BW-15: menor, para não cobrir o iPhone (agora ele é menor) */
+.selo-data{bottom:3vh}
+.premios-1 .p1{position:absolute;width:clamp(220px,18vw,310px);top:calc(var(--pe,30vh) + 7vh)}
+.premios-1 .vale{left:calc(var(--cel-e,40vw) - clamp(220px,18vw,310px) - 5vw);rotate:-7deg;animation:boia 6s ease-in-out infinite}
+.premios-1 .equip{left:auto;right:calc(100vw - var(--cel-x,60vw) - clamp(220px,18vw,310px) - 5vw);top:calc(var(--pe,30vh) + 26vh);rotate:6deg;animation:boia 7s ease-in-out -2s infinite}
+@keyframes boia{0%,100%{translate:0 0}50%{translate:0 -10px}}
+.vale-in,.equip-in{position:relative;padding:22px 22px 20px;border-radius:16px;color:#F9EDD8;overflow:hidden;
+  background:linear-gradient(150deg,#1d1a16,#0c0b0a 70%);border:1px solid rgba(251,203,92,.5);
+  box-shadow:0 30px 60px -20px rgba(0,0,0,.7),0 0 34px rgba(255,168,48,.14),inset 0 1px 0 rgba(255,244,207,.12)}
+.vale-in{-webkit-mask:radial-gradient(circle 11px at 0 64%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 11px at 100% 64%,#0000 98%,#000) right/51% 100% no-repeat;
+  mask:radial-gradient(circle 11px at 0 64%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 11px at 100% 64%,#0000 98%,#000) right/51% 100% no-repeat}
+.vale-in::after,.equip-in::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,244,207,.14) 48%,transparent 60%);
+  background-size:260% 100%;animation:reflexo 5.5s ease-in-out infinite;pointer-events:none}
+@keyframes reflexo{0%,55%{background-position:120% 0}100%{background-position:-60% 0}}
+.vale-in .mono,.equip-in .mono{display:block;font-size:10px;color:#FBCB5C;letter-spacing:.16em}
+.vale-in b,.equip-in b{display:block;font-family:Burbank,Impact;font-weight:400;text-transform:uppercase;line-height:.9;margin:10px 0 2px;font-size:clamp(30px,2.5vw,46px);white-space:nowrap;
+  background-image:linear-gradient(180deg,#FFF4CF 8%,#FBCB5C 45%,#E8961C 80%,#8F4508);-webkit-background-clip:text;background-clip:text;color:transparent}
+.equip-in b{font-size:clamp(26px,2.05vw,38px)}
+.vale-ex{display:block;font-family:Inter;font-weight:300;font-size:clamp(18px,1.5vw,26px);letter-spacing:-.01em}
+.vale-in i,.equip-in i{display:block;height:1px;margin:16px 0 12px;background:repeating-linear-gradient(90deg,rgba(251,203,92,.6) 0 6px,transparent 6px 11px)}
+.equip-in ul{list-style:none;margin:10px 0 0;font-size:14px;line-height:1.55}
+.equip-in li::before{content:"· ";color:#FBCB5C}
+@media (max-width:860px){
+  .premios-1 .p1{width:43vw;top:calc(var(--pe,30vh) + 7.5vh)}
+  .premios-1 .vale{left:var(--g);rotate:-4deg}
+  .premios-1 .equip{left:auto;right:var(--g);top:calc(var(--pe,30vh) + 7.5vh);rotate:4deg}
+  .vale-in,.equip-in{padding:12px 12px 10px;border-radius:12px}
+  .vale-in b,.equip-in b{font-size:19px;margin:6px 0 0}
+  .vale-ex{font-size:13px}.vale-in .mono,.equip-in .mono{font-size:7.5px;letter-spacing:.12em}
+  .equip-in ul{font-size:11px;line-height:1.4;margin-top:4px}
+  .vale-in i,.equip-in i{margin:8px 0 6px}
+  .vale-in{-webkit-mask:none;mask:none}
+  .abertura h1.frase-b{left:0;right:0;top:auto;bottom:auto;top:calc(var(--cel-y,60vh) - 76px);text-align:center;font-size:11px;max-width:none;padding:0}
+  .abertura h1.frase-b b{font-size:20px}
+}
+}
+
+/* BW-16 (pedido dele, 10/11): o dourado nos valores não ficou bom → preço e contagem voltam ao preto. Hierarquia: o que
+   chama atenção é o PREÇO e a CONTAGEM; o resto é letra miúda. Garantia vira um selo redondo ao lado do 597; o botão
+   fica logo abaixo do preço; a contagem vem sozinha, com espaço, e o título dela maior para dizer o que está contando.
+   Preço, botão e contagem cabem na mesma tela. */
+.oferta .bw-t{margin-bottom:clamp(14px,1.6vw,24px);font-size:11px}
+.preco-l{position:relative;display:inline-block}
+.oferta .preco{font-size:clamp(120px,15.5vw,240px);color:var(--tx)}
+.selo-gar{position:absolute;left:100%;top:-6%;width:clamp(124px,11vw,176px);aspect-ratio:1;margin-left:clamp(2px,.6vw,10px);rotate:12deg;color:var(--tx)}
+.selo-gar svg{position:absolute;inset:0;width:100%;height:100%;animation:gira 22s linear infinite;overflow:visible}
+.selo-gar text{font-family:Inter;font-weight:700;font-size:15.5px;letter-spacing:.17em;fill:currentColor}
+.selo-gar::before{content:"";position:absolute;inset:21%;border-radius:50%;border:1.5px solid currentColor;opacity:.85}
+.selo-gar .sg-m{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1}
+.selo-gar .sg-m b{font-family:Burbank,Impact;font-weight:400;font-size:clamp(38px,3.4vw,58px);color:var(--laranja);line-height:.85}
+.selo-gar .sg-m span{font-size:clamp(8.5px,.78vw,12px);font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-align:center;margin-top:3px}
+@keyframes gira{to{rotate:360deg}}
+.oferta .parcela{margin-top:10px;font-size:14px}
+.oferta .btn-escuro{margin-top:clamp(18px,2.2vw,28px)}
+.oferta .seg{margin-top:10px;font-size:11px}
+.miuda{max-width:440px;margin:clamp(16px,2vh,24px) auto 0;display:flex;flex-direction:column;gap:6px}
+.oferta .miuda .parc{font-size:12px;line-height:1.5;color:var(--suave);margin:0}
+.oferta .miuda .aviso-preco{margin:0;font-size:10px}
+.oferta .relogio{margin:clamp(40px,7vh,80px) 0 0;padding-top:clamp(30px,5vh,56px);border-top:1px solid var(--linha);max-width:900px;margin-left:auto;margin-right:auto}
+.oferta .live-t{font-family:Burbank,Impact;font-size:clamp(24px,2.4vw,38px);letter-spacing:.01em;text-transform:uppercase;color:var(--tx);margin-bottom:clamp(12px,2vh,22px)}
+.oferta .relogio.urgente .live-t{color:var(--laranja)}
+.oferta .contagem b,.oferta .relogio.urgente .contagem b{font-size:clamp(70px,8.4vw,140px);background:none;color:var(--tx)}
+.oferta .relogio.urgente .contagem b{color:var(--laranja)}
+.oferta .contagem .mono{color:var(--suave);font-size:10px}
+.oferta .relogio + .bonus{margin-top:14vh}
+@media (max-width:860px){
+  .selo-gar{left:100%;right:auto;top:4%;width:88px;margin:0 0 0 2px}
+  .oferta .preco{font-size:clamp(96px,29vw,128px)}
+  .selo-gar .sg-m b{font-size:28px}.selo-gar .sg-m span{font-size:6.5px}
+}
+/* BW-17: o selo redondo foi reprovado ("parece selo falso") → volta a caixa da garantia de antes (escudo, dourado), logo abaixo do preço */
+.gar-l{margin-top:clamp(12px,1.6vh,20px)}
+.oferta .garantia{margin-top:0;padding:12px 18px;border-color:rgba(201,120,15,.55);box-shadow:0 0 30px rgba(235,164,44,.12)}
+.oferta .garantia svg{color:#C9780F;width:38px;height:38px}
+.oferta .garantia b{font-size:22px;background-image:linear-gradient(180deg,#F7CF66 0%,#EBA42C 42%,#BE6A10 78%,#7E3B06);-webkit-background-clip:text;background-clip:text;color:transparent}
+.oferta .garantia span{color:#7a5214;font-size:13px}
+/* abertura: 10.11 vira um carimbo colado no BLACK WEEK; sem o "live de abertura · 20h"; legenda do iPhone encostada no aparelho */
+.selo-data{left:auto;right:calc(100% - var(--tit-d,90vw) + .5vw);top:calc(var(--pe,30vh) - 2.2vh);bottom:auto;transform:rotate(-6deg);transform-origin:50% 50%}
+.selo-data .caixa{font-size:clamp(46px,4.6vw,86px);border-radius:clamp(12px,1.3vw,22px);background-color:transparent;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.selo-data .sub{display:none}
+.abertura h1.frase-b{left:calc(var(--cel-x,60vw) - .8vw);top:calc(var(--cel-y,50vh) + 3vh)}
+.abertura h1.frase-b::before{content:"";display:block;width:clamp(26px,2.6vw,44px);height:1px;background:#FBCB5C;margin:0 0 10px -3.2vw}
+@media (max-width:860px){
+  .selo-data{right:calc(100% - var(--tit-d,90vw));top:calc(var(--pe,30vh) - 1.6vh);transform:rotate(-6deg)}
+  .selo-data .caixa{font-size:40px;border-radius:12px}
+  .abertura h1.frase-b{left:0;right:0;top:calc(var(--cel-y,60vh) - 50px)}
+  .abertura h1.frase-b::before{display:none}
+}
+/* BW-18 (pedido dele, 10/11): a legenda do iPhone batia de frente no cartão dos equipamentos → vai para baixo, no pé da tela,
+   centrada debaixo do iPhone (o lugar que era do selo 10.11) */
+.abertura h1.frase-b{left:0;right:0;top:auto;bottom:4.5vh;margin:0 auto;text-align:center;max-width:none;font-size:clamp(14px,1.15vw,19px);
+  text-shadow:0 2px 16px rgba(0,0,0,.85),0 0 30px rgba(0,0,0,.6)}
+.abertura h1.frase-b::before{display:none}
+.abertura h1.frase-b{width:fit-content;padding:12px 26px 12px;border-radius:16px;background:rgba(11,11,12,.6);border:1px solid rgba(251,203,92,.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.abertura h1.frase-b b{font-size:2.3em;text-shadow:none;filter:drop-shadow(0 0 12px rgba(255,168,48,.4))}   /* BW-19: a sombra preta passava por dentro do dourado (texto transparente) e apagava o brilho */
+@media (max-width:860px){.abertura h1.frase-b{top:auto;bottom:4vh;font-size:12px}.abertura h1.frase-b b{font-size:26px}}
+.incluso-sec{padding:2vh var(--g) 8vh;text-align:center}
+.incluso-sec .incluso{margin-top:3vh}
+.soma{max-width:560px;margin:0 auto 4vh;text-align:left}
+.soma-t{text-align:center;margin-bottom:14px}
+.soma-l{display:flex;align-items:baseline;gap:12px;padding:12px 0;border-bottom:1px solid var(--linha);font-size:clamp(17px,1.4vw,21px)}
+.soma-l i{flex:1;border-bottom:1px dotted rgba(249,237,216,.35);transform:translateY(-4px)}
+.soma-l s{font-family:Burbank,Impact;font-size:1.3em;text-decoration-thickness:2px;opacity:.85}
+.soma-l.tot{border-bottom:0;font-weight:700}
+.soma-l.tot s{font-size:1.6em;opacity:1}
+.bw-t{color:#FBCB5C!important;margin-bottom:clamp(30px,3.4vw,56px)}
+.faq .cab p{max-width:420px}
+/* BW-10: cena Blackmagic na prática dentro da abertura */
+.pr-cena{position:absolute;inset:0;z-index:4;pointer-events:none;display:grid;grid-template-columns:1.25fr 1fr;gap:5vw;align-items:center;padding:0 var(--g);color:var(--creme)}
+.pr-video{aspect-ratio:16/9;border-radius:10px;overflow:hidden;opacity:0}
+.pr-video video{width:100%;height:100%;object-fit:cover;display:block}
+.pr-i{opacity:0}
+.pr-txt h2{font-size:clamp(40px,5vw,86px);margin:14px 0 22px}
+.pr-txt h2 .fino{display:block;color:var(--laranja);font-size:.5em;line-height:1.1}
+.pr-txt .linha{border-top:1px solid rgba(249,237,216,.16);padding:14px 0;display:grid;grid-template-columns:50px 1fr;gap:10px}
+.pr-txt .linha b{display:block;font-family:Burbank,Impact;font-weight:400;font-size:22px;text-transform:uppercase}
+.pr-txt .linha span:not(.mono){color:#b8afa3;font-size:14px;line-height:1.45}
+.ancora{position:absolute;top:0}
+.modulos{position:relative}
+@media (max-width:860px){
+  .pr-cena{grid-template-columns:1fr;align-content:center;gap:3vh}
+  .pr-txt h2{font-size:38px;margin:10px 0 12px}
+  .pr-txt .linha{padding:9px 0;grid-template-columns:36px 1fr}
+  .pr-txt .linha b{font-size:18px}
+  .pr-txt .linha span:not(.mono){font-size:12.5px}
+}
+</style>
+</head>
+<body data-tema="escuro">
+<canvas id="topo-linhas" aria-hidden="true"></canvas>
+<div id="carrega"><span class="n" id="cont">0</span></div>
+
+<div id="cursor"><i class="bola"></i></div>
+
+<header class="barra">
+  <a class="pilula" href="#oferta">Garantir o combo</a>
+  <a href="#topo" class="logo"><img src="midia/logo.png" alt="TVF ProRes"></a>
+  <button class="menu-bt" id="menu-bt" aria-label="Abrir menu"><i></i></button>
+</header>
+<a class="zap" id="zap" href="https://wa.me/5511939246496?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Black%20Week%20TVF%20e%20tenho%20uma%20d%C3%BAvida." target="_blank" rel="noopener" aria-label="Tirar dúvida no WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 6.9L3.2 29l6.5-1.7c1.9 1 4.1 1.6 6.3 1.6 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.6c-2 0-3.9-.5-5.6-1.5l-.4-.2-3.9 1 1-3.8-.3-.4c-1.1-1.7-1.7-3.7-1.7-5.8C5.1 9.9 10 5.2 16 5.2s10.9 4.7 10.9 10.6S22 26.6 16 26.6zm6-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.7s1.2 3.1 1.4 3.4c.2.2 2.4 3.6 5.7 5 .8.3 1.4.5 1.9.7.8.2 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg><span>Dúvidas? Fala com a gente</span></a>
+<nav id="menu">
+  <a href="#pratica">TVF ProRes <small>gravar</small></a>
+  <a href="#storyflow">Storyflow <small>organizar</small></a>
+  <a href="#color">TVF Color <small>colorir</small></a>
+  <a href="#oferta">Valores <small>combo Black Week</small></a>
+  <a href="#perguntas">Perguntas <small>tudo explicado</small></a>
+</nav>
+
+<main>
+<!-- ABERTURA: o iPhone em estúdio; o mouse revela o "raio-x" laranja do aparelho -->
+<section class="abertura" id="topo" data-tema="escuro">
+  <div class="brilho2" aria-hidden="true"></div>
+  <div class="faixas" aria-hidden="true">
+    <div class="fx f1"><div class="trilha">O MERCADO MUDOU. A SUA ENTREGA PRECISA MUDAR. — O MERCADO MUDOU. A SUA ENTREGA PRECISA MUDAR. — O MERCADO MUDOU. A SUA ENTREGA PRECISA MUDAR. — O MERCADO MUDOU. A SUA ENTREGA PRECISA MUDAR. — </div></div>
+    <div class="fx f2"><div class="trilha">A SUA PRÓXIMA ENTREGA COMEÇA AGORA. — A SUA PRÓXIMA ENTREGA COMEÇA AGORA. — A SUA PRÓXIMA ENTREGA COMEÇA AGORA. — A SUA PRÓXIMA ENTREGA COMEÇA AGORA. — A SUA PRÓXIMA ENTREGA COMEÇA AGORA. — A SUA PRÓXIMA ENTREGA COMEÇA AGORA. — </div></div>
+  </div>
+  <canvas id="raiox" aria-label="iPhone Pro laranja"></canvas>
+  <!-- assinatura TVF: a imagem dele aparece por baixo de traços que se desenham na ordem da escrita -->
+  <svg class="assina" viewBox="0 0 961 1637" aria-label="TVF" role="img">
+    <defs><mask id="m-tinta" maskUnits="userSpaceOnUse" x="0" y="0" width="961" height="1637">
+      <g fill="none" stroke="#fff" stroke-width="64" stroke-linecap="round" stroke-linejoin="round"><path d="M70.1,586.6 L90.1,582.6 L122.1,566.6 L130.1,574.6 L142.1,574.6 L146.1,570.6 L166.2,570.6 L206.2,562.6 L210.2,558.6 L230.2,558.6" data-comp="171.7"/><path d="M122.1,566.6 L142.1,534.5 L210.2,490.5 L234.2,482.5" data-comp="144.2"/><path d="M166.2,1559.6 L166.2,1539.5 L170.2,1535.5 L174.2,1379.4 L178.2,1375.4 L178.2,1331.3 L182.2,1327.3 L182.2,1255.3 L186.2,1251.2 L186.2,1223.2 L190.2,1219.2 L190.2,1167.2 L194.2,1163.2 L198.2,1135.1 L218.2,1111.1 L222.2,1099.1 L234.2,1027.0 L238.2,1023.0 L238.2,1011.0 L258.3,942.9 L258.3,926.9 L266.3,910.9 L266.3,898.9 L278.3,862.9 L282.3,830.8 L290.3,810.8 L318.3,678.7 L338.3,658.7 L338.3,582.6 L342.3,578.6 L342.3,550.5 L346.3,546.5 L346.3,518.5 L350.3,514.5 L346.3,510.5 L342.3,470.5 L326.3,450.4 L318.3,446.4 L286.3,446.4 L282.3,450.4 L258.3,450.4 L250.2,454.5" data-comp="1241.8"/><path d="M170.2,466.5 L222.2,422.4 L234.2,418.4" data-comp="80.8"/><path d="M194.2,1131.1 L186.2,1123.1 L190.2,1011.0 L194.2,1007.0 L194.2,963.0 L198.2,959.0 L198.2,914.9 L202.2,910.9 L202.2,870.9 L206.2,866.9 L206.2,822.8 L210.2,818.8 L210.2,782.8 L214.2,778.8 L214.2,742.7 L218.2,738.7 L218.2,702.7 L222.2,698.7 L222.2,662.7 L226.2,658.7 L226.2,622.6 L230.2,618.6 L230.2,570.6 L238.2,546.5 L238.2,486.5 L246.2,458.5 L242.2,402.4 L246.2,398.4 L250.2,362.4 L266.3,310.3 L258.3,298.3 L266.3,206.2 L270.3,202.2 L278.3,154.2 L302.3,94.1" data-comp="1073.5"/><path d="M242.2,546.5 L318.3,530.5 L322.3,526.5 L342.3,526.5" data-comp="103.4"/><path d="M266.3,266.3 L278.3,266.3 L294.3,278.3" data-comp="32.0"/><path d="M310.3,86.1 L314.3,82.1 L330.3,82.1 L338.3,90.1 L334.3,170.2 L302.3,270.3 L282.3,298.3 L266.3,306.3" data-comp="270.6"/><path d="M414.4,1503.5 L410.4,1499.5 L410.4,1475.5 L402.4,1455.5 L394.4,1371.4 L390.4,1367.4 L382.4,1295.3 L374.4,1267.3 L370.4,1207.2 L366.4,1203.2 L362.4,1139.1 L358.4,1135.1 L358.4,1107.1 L354.4,1103.1 L354.4,1075.1 L350.3,1071.1 L350.3,1043.0 L346.3,1039.0 L346.3,1011.0 L342.3,975.0 L338.3,971.0 L334.3,914.9 L330.3,910.9 L330.3,886.9 L326.3,882.9 L326.3,858.9" data-comp="665.3"/><path d="M342.3,666.7 L354.4,678.7 L354.4,702.7 L358.4,706.7 L358.4,738.7 L362.4,742.7 L362.4,770.8 L366.4,774.8 L370.4,850.8 L374.4,854.9 L382.4,959.0 L386.4,963.0 L386.4,991.0 L390.4,995.0 L390.4,1023.0 L394.4,1027.0 L394.4,1055.1 L398.4,1059.1 L410.4,1199.2 L414.4,1203.2 L414.4,1223.2 L430.4,1235.2" data-comp="597.3"/><path d="M350.3,514.5 L354.4,510.5 L382.4,510.5 L502.5,474.5 L554.6,470.5 L578.6,450.4 L598.6,446.4 L610.6,438.4 L630.6,434.4 L702.7,402.4 L710.7,402.4 L798.8,350.3 L890.9,270.3" data-comp="609.1"/><path d="M538.5,374.4 L534.5,418.4 L530.5,422.4 L530.5,462.5 L538.5,470.5 L526.5,494.5 L526.5,530.5 L518.5,558.6 L514.5,634.6 L510.5,638.6 L510.5,682.7 L506.5,686.7 L506.5,722.7 L502.5,726.7 L498.5,798.8 L494.5,802.8 L494.5,838.8 L490.5,842.8 L490.5,870.9 L486.5,874.9 L486.5,934.9 L482.5,938.9 L482.5,950.9 L490.5,963.0 L490.5,971.0 L478.5,987.0 L470.5,1011.0 L466.5,1075.1 L462.5,1079.1 L462.5,1103.1 L458.5,1107.1 L458.5,1135.1 L454.5,1139.1 L446.4,1219.2 L430.4,1243.2 L430.4,1275.3 L434.4,1279.3 L434.4,1291.3 L430.4,1295.3 L434.4,1343.3 L430.4,1351.3 L434.4,1355.4" data-comp="1026.0"/><path d="M518.5,1039.0 L510.5,991.0 L490.5,975.0" data-comp="74.3"/><path d="M498.5,950.9 L510.5,946.9 L554.6,898.9 L586.6,870.9 L610.6,862.9" data-comp="145.7"/><path d="M522.5,1383.4 L538.5,1355.4 L558.6,1291.3 L574.6,1199.2 L578.6,1195.2 L578.6,1175.2 L582.6,1171.2 L586.6,1131.1 L590.6,1127.1 L594.6,1071.1 L598.6,1067.1 L598.6,1043.0 L602.6,1039.0 L606.6,967.0 L610.6,963.0 L610.6,930.9 L614.6,926.9 L614.6,882.9 L618.6,878.9 L618.6,866.9 L614.6,862.9 L618.6,854.9 L618.6,722.7 L614.6,718.7 L614.6,642.6 L610.6,638.6 L614.6,614.6 L590.6,562.6 L586.6,510.5 L578.6,494.5 L558.6,474.5" data-comp="953.2"/><path d="M530.5,534.5 L554.6,546.5 L566.6,546.5 L578.6,554.6 L586.6,554.6" data-comp="61.4"/><path d="M618.6,622.6 L622.6,626.6 L650.6,630.6 L678.7,646.6 L694.7,646.6 L722.7,666.7 L762.8,666.7 L774.8,662.7" data-comp="169.5"/><path d="M622.6,830.8 L646.6,826.8 L734.7,778.8 L786.8,774.8" data-comp="176.9"/><path d="M730.7,798.8 L722.7,790.8 L722.7,766.8 L718.7,762.8 L714.7,714.7 L710.7,710.7 L710.7,674.7 L702.7,638.6 L706.7,542.5 L722.7,478.5 L734.7,454.5 L758.8,434.4 L790.8,438.4 L802.8,454.5 L814.8,482.5 L818.8,522.5 L822.8,526.5 L818.8,602.6 L814.8,606.6 L814.8,618.6 L802.8,638.6" data-comp="634.1"/></g></mask></defs>
+    <image href="midia/abertura/assinatura-tvf-fina.png" width="961" height="1637" mask="url(#m-tinta)"/>
+  </svg>
+  <div class="selo-data" aria-hidden="true"><div class="caixa" id="selo-dia">10.11</div><div class="sub"><i></i><span id="selo-sub">live de abertura · 20h</span><i></i></div><!-- BW-16: sub escondido na abertura --></div>
+  <!-- BW-10: a foto do iPhone encolhe até este vídeo e vira ele (transparência); os textos entram junto -->
+  <div class="pr-cena" aria-label="TVF ProRes: Blackmagic na prática">
+    <div class="pr-video"><video src="midia/bm-tela.mp4" poster="midia/bm-tela.jpg" muted loop playsinline preload="metadata"></video></div>
+    <div class="pr-txt">
+      <div class="mono lar pr-i">parte 01 de 03 · TVF ProRes</div>
+      <h2 class="bb pr-i"><span class="fino">setup profissional</span>Blackmagic na prática.</h2>
+      <div class="linha pr-i"><span class="mono">01</span><div><b>ProRes</b><span>Codec, resolução, FPS e obturador: quando o ProRes muda a sua entrega e quando usar LT ou Proxy.</span></div></div>
+      <div class="linha pr-i"><span class="mono">02</span><div><b>LUTs e cor</b><span>Do set à entrega, o fluxo de cor que mantém a imagem com cara de cinema sem estragar a pele.</span></div></div>
+      <div class="linha pr-i"><span class="mono">03</span><div><b>Workflow</b><span>Do celular ao SSD, da gravação à edição: um sistema que você repete em qualquer trabalho.</span></div></div>
+    </div>
+  </div>
+  <h1 class="frase-b"><span class="oculto">Black Week TVF — </span><b>iPhone 18 Pro Max</b><br>para os 100 primeiros do combo</h1>
+  <!-- BW-15: prêmios já na 1ª tela, com pouco texto (os detalhes ficam nos cards da oferta) -->
+  <div class="premios-1" aria-label="Prêmios da Black Week">
+    <div class="vale p1"><div class="vale-in">
+      <span class="mono">convite · black week</span><b>Masterclass</b><span class="vale-ex">exclusiva</span><i></i><span class="mono">combo até 23h59 · 10/11</span>
+    </div></div>
+    <div class="equip p1"><div class="equip-in">
+      <span class="mono">sorteio</span><b>Equipamentos</b>
+      <ul><li>Mastergrip Telesin</li><li>Microfone Neewer</li><li>Filtros de cor Neewer</li></ul><i></i><span class="mono">combo até 23h59 · 10/11</span>
+    </div></div>
+  </div>
+</section>
+
+
+
+<!-- galeria horizontal: a rolagem para baixo puxa as fotos da direita para a esquerda; o fundo clareia até o branco -->
+
+
+<!-- duas frentes -->
+
+
+
+<!-- módulos -->
+<section class="modulos" id="modulos" data-tema="escuro">
+  <span id="prores" class="ancora"></span>
+  <div class="cab"><h2 class="bb"><span class="fino">o método</span>do REC ao cliente</h2><p>9 módulos, mais de 40 aulas, gravados em 4K. Passe o mouse em cada um para ver as aulas.</p></div>
+  <div class="cartoes">
+    <div class="cartao sobe"><div class="topo mono"><span>Módulo 01</span><span class="lar">3 aulas</span></div><div class="base"><b>Visão e mentalidade</b><ol><li>Decisões antes do REC</li><li>Quem grava vídeo × videomaker</li><li>Por que o Blackmagic importa</li></ol></div></div>
+    <div class="cartao sobe"><div class="topo mono"><span>Módulo 02</span><span class="lar">4 aulas</span></div><div class="base"><b>Domine o Blackmagic</b><ol><li>O mapa do Blackmagic</li><li>Configuração base profissional</li><li>Ajustar em qualquer ambiente</li><li>Erros que acabam com a imagem</li></ol></div></div>
+    <div class="cartao sobe"><div class="topo mono"><span>Módulo 03</span><span class="lar">3 aulas</span></div><div class="base"><b>Captação profissional</b><ol><li>O setup real de trabalho</li><li>Lente é linguagem</li><li>Gimbal ou mão livre</li></ol></div></div>
+    <div class="cartao sobe"><div class="topo mono"><span>Módulo 04</span><span class="lar">5 aulas</span></div><div class="base"><b>Base da imagem</b><ol><li>Imagem premium começa antes do app</li><li>Manual × automático</li><li>Ler a luz</li><li>Imagem premium em camadas de luz</li><li>10 erros que denunciam amadorismo</li></ol></div></div>
+    <div class="cartao sobe"><div class="topo mono"><span>Módulo 05</span><span class="lar">5 aulas</span></div><div class="base"><b>Na prática</b><ol><li>Aula prática na rua</li><li>Blackmagic configurado na prática</li><li>Captação 1: vídeo fashion</li><li>Captação 2: depoimento</li><li>Captação 3: atleta em movimento</li></ol></div></div>
+    <div class="cartao sobe"><div class="topo mono"><span>Módulo 06</span><span class="lar">9 aulas</span></div><div class="base"><b>Edição profissional</b><ol><li>A mentalidade do editor</li><li>Decupagem e emenda de músicas</li><li>Efeitos sonoros</li><li>Correção de cor no CapCut</li><li>Da trilha ao fechamento (4 aulas)</li><li>Edição no celular, direto do SSD</li></ol></div></div>
+    <div class="cartao sobe"><div class="topo mono"><span>Módulo 07</span><span class="lar">5 aulas</span></div><div class="base"><b>LUTs e color grading</b><ol><li>LUT não é filtro mágico</li><li>Aula guia na prática</li><li>Fluxo de trabalho com LUT</li><li>Erros de LUT e cor</li><li>Identidade artística</li></ol></div></div>
+    <div class="cartao sobe"><div class="topo mono"><span>Módulo 08</span><span class="lar">4 aulas</span></div><div class="base"><b>Como fechar clientes</b><ol><li>Como começar mesmo sem nome</li><li>Clientes toda semana</li><li>Script de venda que fecha</li><li>Meu método real de crescimento</li></ol></div></div>
+    <div class="cartao largo sobe"><canvas class="pontos" aria-hidden="true"></canvas><span class="dica mono">passe o mouse · construa autoridade</span><div class="topo mono"><span>Módulo 09</span><span class="lar">3 aulas</span></div><div class="base"><b>Posicionamento digital</b><ol><li>Por que bons profissionais continuam invisíveis</li><li>Instagram que passa valor</li><li>Portfólio que fecha cliente</li></ol></div></div>
+  </div>
+  <div class="cta-meio"><a class="pilula" href="#oferta">Garantir o combo →</a><span class="mono">Combo Black Week <span class="js-preco">R$ 597</span> · 7 dias de garantia</span></div>
+</section>
+
+
+
+<!-- PARTE 2: STORYFLOW (conteúdo da página storyflow-pagina.vercel.app, da Gabi) -->
+<section class="produto" id="storyflow" data-tema="claro">
+  <div class="sf-escuro" aria-hidden="true"></div>
+  <div class="parte-cab">
+    <div class="mono lar">parte 02 de 03 · organizar</div>
+    <h2 class="bb sf-titulo"><span class="fino">o sistema operacional do storymaker</span><span class="leitor">Storyflow™</span><canvas class="pontos" aria-hidden="true"></canvas></h2>
+    <span class="dica mono sf-dica">passe o mouse</span>
+    <p>Seu talento te trouxe até aqui. Agora você precisa de estrutura para crescer: do primeiro contato com o cliente até a cobertura, a entrega e o financeiro.</p>
+  </div>
+  <div class="sf-topo">
+    <figure class="sobe"><img src="midia/storyflow/fluxo.jpg" alt="Informações espalhadas do cliente organizadas dentro do painel do Storyflow" loading="lazy"></figure>
+    <div class="dores">
+      <div class="mono">quando a operação ainda é no improviso</div>
+      <ul>
+        <li>Preço definido no feeling, sem critério para chegar num valor justo</li>
+        <li>Contrato improvisado ou combinado só por mensagem</li>
+        <li>Informação do cliente espalhada entre conversas, prints e memória</li>
+        <li>Financeiro sem visão do que entra, sai e sobra</li>
+      </ul>
+      <p class="virada">O problema não é falta de talento. É falta de estrutura.</p>
+    </div>
+  </div>
+  <div class="cartoes pilares">
+    <div class="cartao foto sobe"><img class="fundo" src="midia/storyflow/operacao.jpg" alt="" loading="lazy"><div class="topo mono"><span>Pilar 01</span><span class="lar">4 ferramentas</span></div><div class="base"><b>Operação</b><ol><li>Trello do Storymaker</li><li>Briefing</li><li>Checklists pré e pós-evento</li><li>Estrutura de cobertura em tempo real</li></ol></div></div>
+    <div class="cartao foto sobe"><img class="fundo" src="midia/storyflow/entregas.jpg" alt="" loading="lazy"><div class="topo mono"><span>Pilar 02</span><span class="lar">2 ferramentas</span></div><div class="base"><b>Criação e entrega</b><ol><li>Playlists organizadas</li><li>Biblioteca de efeitos sonoros</li></ol></div></div>
+    <div class="cartao foto sobe"><img class="fundo" src="midia/storyflow/negocio.jpg" alt="" loading="lazy"><div class="topo mono"><span>Pilar 03</span><span class="lar">4 ferramentas</span></div><div class="base"><b>Negócio</b><ol><li>Modelos de contratos</li><li>Proposta comercial</li><li>Calculadora de precificação</li><li>Dashboard financeiro</li></ol></div></div>
+  </div>
+  <div class="sf-preco">
+    <figure class="sobe"><img src="midia/storyflow/financeiro.jpg" alt="Painel financeiro do Storyflow numa planilha editável" loading="lazy"></figure>
+    <div>
+      <div class="mono lar">chega de chutar preço</div>
+      <p>A calculadora de precificação Filmly usa uma IA treinada com mais de 650 referências reais do audiovisual brasileiro para dizer quanto cobrar em cada projeto.</p>
+      <p class="mono nota">não é curso: são ferramentas e materiais editáveis · 9 meses de construção · validado com mais de 40 profissionais</p>
+    </div>
+  </div>
+</section>
+
+<!-- PARTE 3: TVF COLOR (conteúdo e vídeos da página tvfcolor2.vercel.app, da Gabi) -->
+<section class="produto cor" id="color" data-tema="escuro" data-tema-inicio="top 30%">
+ <div class="pasta">
+  <svg class="pasta-forma" aria-hidden="true"><path/></svg>
+  <div class="pasta-aba mono">parte 03 de 03 · colorir</div>
+  <div class="parte-cab">
+    <h2 class="bb"><span class="fino">as cores que transformam vídeo em filme</span>TVF Color</h2>
+    <p>O problema não é a sua câmera. Hoje quase todo mundo grava bem, e ainda assim parece vídeo, não filme. O que separa um do outro é a cor.</p>
+  </div>
+  <div class="cl-videos">
+    <figure class="sobe"><video src="midia/color/igreja.mp4" poster="midia/color/igreja.jpg" muted loop playsinline preload="metadata"></video></figure>
+    <figure class="sobe"><video src="midia/color/jardim.mp4" poster="midia/color/jardim.jpg" muted loop playsinline preload="metadata"></video></figure>
+    <figure class="sobe"><video src="midia/color/escadaria.mp4" poster="midia/color/escadaria.jpg" muted loop playsinline preload="metadata"></video></figure>
+  </div>
+  <p class="mono cl-leg">mesmo take, mesma luz: a cor entra enquanto o clipe roda</p>
+  <div class="cl-luts">
+    <div class="mono">o pack</div>
+    <div class="chips"><span>6 LUTs exclusivos</span><span>3 versões de cada</span></div>
+  </div>
+  <div class="cl-versoes">
+    <div><span class="mono lar">versão 01</span><b>Apple Log</b><span>Para quem grava em Log e quer mais controle, com a conversão para Rec.709 já resolvida.</span></div>
+    <div><span class="mono lar">versão 02</span><b>Apple Log 2</b><span>O mesmo look, construído para quem grava no perfil Apple Log 2.</span></div>
+    <div><span class="mono lar">versão 03</span><b>Rec.709</b><span>Para quem não grava em Log: aplicou, o look está lá.</span></div>
+  </div>
+  <p class="cl-onde">Você aplica no <b>Blackmagic Camera</b>, direto no celular, e no <b>CapCut para desktop</b>, na edição.</p>
+  <div class="cta-meio"><a class="pilula" href="#oferta">Ver os valores →</a><span class="mono">os três juntos no combo Black Week</span></div>
+ </div>
+</section>
+
+
+
+<section class="oferta" id="oferta" data-tema="claro">
+  <div class="mono">Black Week TVF · 10 a 17 de novembro</div>
+  <h2 class="bb of-titulo" id="of-titulo" aria-label="Combo Black Week"><span class="of-l1">combo</span><span class="of-l2">Black Week</span></h2>
+  <p class="intro-combo">Vídeo profissional no celular não depende de câmera cara. Depende de saber gravar, dar cor e organizar o trabalho. São os três produtos do TVF, juntos.</p>
+  <div class="trio">
+    <a class="prod" href="#pratica" aria-label="TVF ProRes: ver a parte do curso"><div class="prod-vis"><img class="marca" src="midia/logo.png" alt="TVF ProRes"><img class="foto" src="midia/bm.jpg" alt="" loading="lazy"></div>
+      <div class="prod-topo mono"><span>01 · gravar</span><span>curso</span></div>
+      <div class="prod-base"><b>TVF ProRes</b><span>O curso de gravação em ProRes no celular: dominar o Blackmagic Camera e gravar com cara de cinema.</span><em class="prod-ir mono">ver o TVF ProRes ↑</em></div></a>
+    <a class="prod" href="#storyflow" aria-label="Storyflow: ver a parte do Storyflow"><div class="prod-vis"><img class="marca sf" src="midia/storyflow/logo.png" alt="Storyflow"><img class="foto" src="midia/storyflow/fluxo.jpg" alt="" loading="lazy"></div>
+      <div class="prod-topo mono"><span>02 · organizar</span><span>sistema</span></div>
+      <div class="prod-base"><b>Storyflow</b><span>Ferramentas, processos, contratos, briefings, precificação e financeiro para profissionalizar o seu trabalho de storymaker.</span><em class="prod-ir mono">ver o Storyflow ↑</em></div></a>
+    <a class="prod" href="#color" aria-label="TVF Color: ver a parte do TVF Color"><div class="prod-vis"><img class="marca cl" src="midia/color/logo.webp" alt="TVF Color"><video class="foto" src="midia/color/igreja.mp4" poster="midia/color/igreja.jpg" muted loop playsinline preload="metadata"></video></div>
+      <div class="prod-topo mono"><span>03 · colorir</span><span>LUTs</span></div>
+      <div class="prod-base"><b>TVF Color</b><span>Seis LUTs exclusivos do TVF, em Apple Log, Apple Log 2 e Rec.709, para dar cor e estética às suas imagens.</span><em class="prod-ir mono">ver o TVF Color ↑</em></div></a>
+  </div>
+  <div class="soma">
+    <div class="mono soma-t">o que vem no combo e quanto vale cada item</div>
+    <div class="soma-l" id="soma-master"><span>Masterclass exclusiva <em class="mono">só compras até 23h59 de 10/11</em></span><i></i><s>R$ 697</s></div>
+    <div class="soma-l"><span>TVF ProRes</span><i></i><s>R$ 1.297</s></div>
+    <div class="soma-l"><span>TVF Color</span><i></i><s>R$ 197</s></div>
+    <div class="soma-l"><span>Storyflow</span><i></i><s>R$ 197</s></div>
+    <div class="soma-l inc"><span>Suporte individual na comunidade</span><i></i><b>incluso</b></div>
+    <div class="soma-l tot"><span>Total</span><i></i><s id="soma-tot">R$ 2.388</s></div>
+  </div>
+  <div class="mono bw-t" id="bw-t">na Black Week, tudo isso sai por</div>
+  <div class="preco-l">
+    <div class="preco"><small>R$</small>597</div>
+  </div>
+  <div class="parcela" id="parcela">à vista ou 12x de R$ 61,74 no cartão</div>
+  <div class="gar-l"><div class="garantia"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 4 7 10v13c0 10.5 7.2 18.6 17 21 9.8-2.4 17-10.5 17-21V10z"/><path d="m16.5 24 5.5 5.5 10-11"/></svg>
+    <div><b>7 dias de garantia</b><span>Entrou e viu que não é para você? Pede o reembolso pela Kiwify em até 7 dias e recebe o valor de volta.</span></div></div></div>
+  <a class="btn-escuro" id="bt-combo" data-link="combo" href="#oferta">Garantir o combo <span>→</span></a>
+  <div class="seg">Compra segura pela Kiwify</div>
+  <div class="miuda"><span class="parc" id="parc">Separados, os três somam R$ 691. No combo você paga R$ 94 a menos e ainda leva a masterclass e os sorteios.</span>
+    <span class="aviso-preco mono" id="aviso-preco">à meia-noite de 10/11 o combo sobe para R$ 697</span></div>
+  <div class="relogio">
+    <div class="mono live-t" id="relogio-t">a oferta abre na live de 10/11 às 20h</div>
+    <div class="contagem" id="contagem" aria-live="off">
+      <div><b data-u="d">00</b><span class="mono">dias</span></div><div><b data-u="h">00</b><span class="mono">horas</span></div>
+      <div><b data-u="m">00</b><span class="mono">min</span></div><div><b data-u="s">00</b><span class="mono">seg</span></div>
+    </div>
+  </div>
+
+  <div class="bonus">
+    <h3 class="bb"><span class="fino">prêmios da</span>Black Week</h3>
+    <div class="bonus-g">
+      <div class="b-iphone"><span class="mono">100 primeiros do combo · palavra secreta na live</span><b>iPhone 18 Pro Max</b><span>Os 100 primeiros compradores do combo concorrem a um iPhone 18 Pro Max Bordeaux, este da primeira tela, conforme o regulamento da promoção. Na live de 10/11, às 20h, a gente vai falar uma palavra secreta. No dia do sorteio, quem for sorteado precisa dizer essa palavra; se não souber, sorteamos de novo. <b class="so-live">A palavra só é dita na live: para concorrer, esteja lá ao vivo.</b></span></div>
+      <div class="b-prazo"><span class="mono">combo até 23h59 de 10/11</span><b>Sorteio de equipamentos</b><span>Prêmios: Mastergrip Telesin, microfone Neewer e filtros de cor Neewer. Garantiu o combo até 23h59 do dia da live? Você participa com a palavra-chave secreta da transmissão.</span></div>
+      <div class="b-prazo"><span class="mono">combo até 23h59 de 10/11</span><b>Masterclass exclusiva</b><span>Quem garantir o combo até 23h59 do dia da live ganha acesso a uma masterclass exclusiva.</span></div>
+    </div>
+    <p class="mono">Live de abertura em 10/11 às 20h · sorteios em 18/11</p>
+  </div>
+  <div class="avulsos">
+    <div class="mono">prefere levar só um?</div>
+    <div class="combo avulso">
+      <div><span class="mono">curso</span><b>TVF ProRes</b><div class="av-p"><s>R$ 1.297</s> <span class="js-av" data-dia="497" data-depois="597">R$ 497</span></div><a data-link="prores" href="#oferta">comprar só o curso →</a></div>
+      <div><span class="mono">LUTs</span><b>TVF Color</b><div class="av-p"><s>R$ 197</s> <span class="js-av" data-dia="97" data-depois="119">R$ 97</span></div><a data-link="color" href="#oferta">comprar só o Color →</a></div>
+      <div><span class="mono">sistema</span><b>Storyflow</b><div class="av-p"><s>R$ 197</s> <span class="js-av" data-dia="97" data-depois="119">R$ 97</span></div><a data-link="storyflow" href="#oferta">comprar só o Storyflow →</a></div>
+    </div>
+    <p class="mono" id="av-nota">comprar separado é pagar mais e levar menos</p>
+  </div>
+</section>
+
+<section class="faq" id="perguntas" data-tema="escuro">
+  <div class="cab"><h2 class="bb"><span class="fino">tudo explicado</span>perguntas frequentes</h2><p>Leia antes de comprar. Se ainda ficar alguma dúvida, chama a gente no WhatsApp.</p></div>
+  <details><summary><span class="mono lar">01</span><b>O que eu levo no combo da Black Week?</b><i>+</i></summary><p>Os três produtos do TVF juntos: o curso <b>TVF ProRes</b> (gravação em ProRes no celular com o Blackmagic Camera), o <b>Storyflow</b> (ferramentas e materiais para organizar a operação do storymaker) e o <b>TVF Color</b> (seis LUTs exclusivos em Apple Log, Apple Log 2 e Rec.709), mais o <b>suporte individual na comunidade</b>. Quem compra o combo até <b>23h59 de 10 de novembro</b> leva também a <b>masterclass exclusiva</b>. Uma compra só, um pagamento só.</p></details>
+  <details><summary><span class="mono lar">02</span><b>Quanto custa e até quando vale cada preço?</b><i>+</i></summary><p><b>R$ 597</b> da abertura, na live de 10 de novembro às 20h, até <b>23h59 de 10 de novembro</b>. A partir de <b>00h de 11 de novembro</b> o combo passa para <b>R$ 697</b>, até <b>23h59 de 17 de novembro</b>, quando a Black Week termina. Todos os horários são de Brasília. Sozinhos: o TVF ProRes sai por R$ 497 no dia 10 e R$ 597 de 11 a 17; o TVF Color e o Storyflow, por R$ 97 no dia 10 e R$ 119 de 11 a 17, cada um. Fora da Black Week: TVF ProRes R$ 1.297, TVF Color R$ 197 e Storyflow R$ 197; a masterclass vale R$ 697.</p></details>
+  <details><summary><span class="mono lar">03</span><b>É pagamento único ou mensalidade?</b><i>+</i></summary><p>Pagamento único. Não é assinatura e não tem cobrança todo mês. Se você parcelar no cartão, são parcelas da mesma compra.</p></details>
+  <details><summary><span class="mono lar">04</span><b>Quais as formas de pagamento? Posso parcelar?</b><i>+</i></summary><p>A compra é feita pela Kiwify, com Pix, boleto, cartão de crédito, dois cartões ou cartão + Pix. No preço de R$ 597, o cartão parcela em até <b>12x de R$ 61,74</b>. O parcelamento tem acréscimo (juros do cartão); à vista no Pix você paga R$ 597. No preço de R$ 697, as parcelas aparecem na hora, no checkout.</p></details>
+  <details><summary><span class="mono lar">05</span><b>Posso comprar só um dos produtos?</b><i>+</i></summary><p>Pode. No dia 10, o TVF ProRes sai por R$ 497 e o TVF Color e o Storyflow por R$ 97 cada; de 11 a 17, R$ 597 e R$ 119 cada. Separados, os três somam R$ 691 no dia 10 e R$ 835 de 11 a 17; no combo saem por R$ 597 e R$ 697. A masterclass e o suporte individual vêm no combo. Os prêmios (iPhone, equipamentos e masterclass) são só para quem compra o <b>combo</b>.</p></details>
+  <details><summary><span class="mono lar">06</span><b>Como recebo o acesso?</b><i>+</i></summary><p>Depois que o pagamento é confirmado, você recebe o acesso no e-mail usado na compra. No Pix e no cartão a liberação é logo após a confirmação; no boleto, depois que o banco compensa o pagamento. O TVF ProRes e o TVF Color ficam na área de membros.</p></details>
+  <details><summary><span class="mono lar">07</span><b>Por quanto tempo tenho acesso?</b><i>+</i></summary><p>TVF ProRes: <b>1 ano</b> a partir da compra, com todas as aulas, materiais e as atualizações desse período. TVF Color: os LUTs e as atualizações ficam disponíveis por <b>1 ano</b> a partir da compra.</p></details>
+  <details><summary><span class="mono lar">08</span><b>E se eu não gostar?</b><i>+</i></summary><p>Você tem <b>7 dias de garantia</b> pela Kiwify. Se não for para você, pede o reembolso dentro desse prazo e recebe o valor de volta.</p></details>
+  <details><summary><span class="mono lar">09</span><b>Quem concorre ao iPhone 18 Pro Max?</b><i>+</i></summary><p>Os <b>100 primeiros compradores do combo</b>, conforme o regulamento da promoção. Durante a live de 10 de novembro, às 20h, a gente vai falar uma <b>palavra secreta</b>. No sorteio, em 18 de novembro, quem for sorteado precisa dizer essa palavra; se não souber, sorteamos de novo. A palavra só é dita na live, então para concorrer de verdade você precisa estar lá ao vivo.</p></details>
+  <details><summary><span class="mono lar">10</span><b>Como entro no sorteio de equipamentos e na masterclass?</b><i>+</i></summary><p>Compre o <b>combo</b> até <b>23h59 de 10 de novembro</b>, o dia da live. Quem compra até esse horário ganha acesso à masterclass exclusiva e participa do sorteio de equipamentos (Mastergrip Telesin, microfone Neewer e filtros de cor Neewer), informando a palavra secreta da live. O sorteio é em 18 de novembro. Quem compra a partir de 11 de novembro não entra nesses dois.</p></details>
+  <details><summary><span class="mono lar">11</span><b>Preciso de uma câmera profissional?</b><i>+</i></summary><p>Não. Tudo é feito para o celular, com o app Blackmagic Camera. Para gravar em ProRes o iPhone precisa ser modelo Pro; se o seu ainda não for, a configuração, a luz, a captação e o posicionamento continuam valendo para qualquer aparelho.</p></details>
+  <details><summary><span class="mono lar">12</span><b>Preciso gravar em Log para usar o TVF Color?</b><i>+</i></summary><p>Não. O pack vem em três versões de cada LUT: Apple Log, Apple Log 2 e Rec.709. A versão Rec.709 é para quem não grava em Log. Você aplica no Blackmagic Camera, no celular, e no CapCut para desktop.</p></details>
+  <details><summary><span class="mono lar">13</span><b>O Storyflow é um curso?</b><i>+</i></summary><p>Não. O Storyflow são ferramentas e materiais prontos para usar na sua operação: Trello do Storymaker, briefing, checklists pré e pós-evento, estrutura de cobertura, playlists, biblioteca de efeitos sonoros, modelos de contrato, proposta comercial, calculadora de precificação e dashboard financeiro. Todos os materiais são editáveis.</p></details>
+  <details><summary><span class="mono lar">14</span><b>Posso compartilhar os LUTs ou dividir a compra?</b><i>+</i></summary><p>Não. A licença é individual e intransferível. Compartilhar, revender, fazer rateio ou colocar os arquivos em grupos é proibido e pode levar ao bloqueio do acesso.</p></details>
+  <details><summary><span class="mono lar">15</span><b>É só para casamento?</b><i>+</i></summary><p>Não. O que você aprende é decisão de imagem, cor e organização, e isso vale para qualquer nicho. Os exemplos do curso vão de casamento a vídeo fashion, depoimento e atleta em movimento.</p></details>
+  <div class="faq-zap"><span>Ficou alguma dúvida?</span><a class="pilula" href="https://wa.me/5511939246496?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Black%20Week%20TVF%20e%20tenho%20uma%20d%C3%BAvida." target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 6.9L3.2 29l6.5-1.7c1.9 1 4.1 1.6 6.3 1.6 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.6c-2 0-3.9-.5-5.6-1.5l-.4-.2-3.9 1 1-3.8-.3-.4c-1.1-1.7-1.7-3.7-1.7-5.8C5.1 9.9 10 5.2 16 5.2s10.9 4.7 10.9 10.6S22 26.6 16 26.6zm6-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.7s1.2 3.1 1.4 3.4c.2.2 2.4 3.6 5.7 5 .8.3 1.4.5 1.9.7.8.2 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>Falar no WhatsApp</a></div>
+</section>
+</main>
+
+<footer data-tema="escuro">
+  <div class="grande bb" id="grande"><span class="fino">a sua próxima entrega</span>começa agora.</div>
+  <div style="margin-top:6vh"><a class="pilula" href="#oferta" style="padding:18px 26px;font-size:13px">Garantir o combo →</a></div>
+  <div class="rodape">
+    <div><b>Black Week TVF</b><span>TVF ProRes, Storyflow e TVF Color.</span><a href="https://wa.me/5511939246496?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Black%20Week%20TVF%20e%20tenho%20uma%20d%C3%BAvida." target="_blank" rel="noopener">WhatsApp · atendimento</a></div>
+    <div><b>Navegar</b><a href="#pratica">TVF ProRes</a><a href="#storyflow">Storyflow</a><a href="#color">TVF Color</a><a href="#oferta">Valores</a></div>
+    <div><b>Instagram</b><a href="https://instagram.com/keverton_sanches">@keverton_sanches</a><a href="https://instagram.com/gabioliveiraceo">@gabioliveiraceo</a><a href="https://instagram.com/gabrielfrezzatti">@gabrielfrezzatti</a></div>
+    <div><b>© TVF ProRes</b><span>Todos os direitos reservados</span></div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const expo = "expo.out", toque = matchMedia("(hover:none)").matches;
+
+// rolagem macia (Lenis) ligada ao relógio do GSAP
+const lenis = new Lenis({ lerp: .09 });
+lenis.on("scroll", ScrollTrigger.update);
+gsap.ticker.add(t => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0);
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener("click", e => {
+  // BW-15: "#pratica" = a cena "Blackmagic na prática", que fica no fim da abertura presa (não tem elemento próprio na rolagem)
+  if (a.getAttribute("href") === "#pratica") { e.preventDefault(); fechaMenu(); lenis.scrollTo(tl2.scrollTrigger.end - 2, { duration: 1.8 }); return; }
+  const alvo = document.querySelector(a.getAttribute("href")); if (!alvo) return;
+  e.preventDefault(); fechaMenu(); lenis.scrollTo(alvo, { duration: 1.6 });
+}));
+
+// menu de tela cheia
+const menu = document.getElementById("menu"), bt = document.getElementById("menu-bt");
+function fechaMenu() { menu.classList.remove("aberto"); }
+bt.addEventListener("click", () => menu.classList.toggle("aberto"));
+
+// cursor laranja que cresce em cima de foto e vídeo
+const cur = document.getElementById("cursor");
+const bola = cur.querySelector(".bola");
+let cx = innerWidth / 2, cy = innerHeight / 2, tx = cx, ty = cy, vx = 0, vy = 0, naAbertura = false, quieto;
+const aperto = { k: 1 };
+addEventListener("pointermove", e => {
+  tx = e.clientX; ty = e.clientY;
+  if (!naAbertura) cur.classList.add("vivo");
+  clearTimeout(quieto); quieto = setTimeout(() => cur.classList.remove("vivo"), 700);   // parado = some
+});
+addEventListener("pointerdown", () => gsap.fromTo(aperto, { k: .55 }, { k: 1, duration: .7, ease: "elastic.out(1,.45)" }));   // clique: aperta e volta
+gsap.ticker.add(() => {   // mola: anda atrás do mouse com inércia e passa um pouco do ponto
+  const d = Math.min(3, gsap.ticker.deltaRatio(60));
+  vx = (vx + (tx - cx) * .2 * d) * .64 ** d; vy = (vy + (ty - cy) * .2 * d) * .64 ** d; cx += vx * d; cy += vy * d;
+  const v = Math.hypot(vx, vy), e = 1 + Math.min(1.1, v * .04), ang = Math.atan2(vy, vx) * 57.3;
+  cur.style.transform = `translate(${cx}px,${cy}px)`;
+  bola.style.transform = `rotate(${ang}deg) scale(${e * aperto.k},${aperto.k / Math.sqrt(e)})`;
+});
+const ab0 = document.querySelector(".abertura");
+ab0.addEventListener("pointerenter", () => { naAbertura = true; cur.classList.remove("vivo"); });
+ab0.addEventListener("pointerleave", () => { naAbertura = false; });
+document.querySelectorAll(".moldura,.cartao,.leque .v,.tela,.pessoa .foto").forEach(el => {
+  el.addEventListener("pointerenter", () => cur.classList.add("grande"));
+  el.addEventListener("pointerleave", () => cur.classList.remove("grande"));
+});
+const pontos9 = document.querySelector(".cartao.largo .pontos");
+if (pontos9) { pontos9.addEventListener("pointerenter", () => cur.classList.add("lente")); pontos9.addEventListener("pointerleave", () => cur.classList.remove("lente")); }
+
+// cor do fundo muda conforme a seção
+document.querySelectorAll("[data-tema]").forEach(s => {
+  if (s === document.body) return;
+  ScrollTrigger.create({ trigger: s, start: s.dataset.temaInicio || "top 55%", end: "bottom 55%", refreshPriority: -1,   // calcula depois das telas presas
+    onEnter: () => tema(s.dataset.tema), onEnterBack: () => tema(s.dataset.tema),
+    onLeaveBack: () => { if (s.dataset.temaInicio) tema("claro"); } });   // BW-13: subindo de volta do TVF Color, o Storyflow volta claro
+});
+function tema(t) { if (document.body.dataset.tema !== t) { document.body.style.backgroundColor = ""; document.body.dataset.tema = t; desenhaTopo(); } }
+
+// linhas de contorno (topografia) desenhadas uma vez, a cor segue o tema
+const tl = document.getElementById("topo-linhas"), tg = tl.getContext("2d");
+function ruido(x, y) {   // ruído suave de valor, sem biblioteca
+  const s = (a, b) => { const n = Math.sin(a * 127.1 + b * 311.7) * 43758.5453; return n - Math.floor(n); };
+  const xi = Math.floor(x), yi = Math.floor(y), xf = x - xi, yf = y - yi, u = xf * xf * (3 - 2 * xf), v = yf * yf * (3 - 2 * yf);
+  return s(xi, yi) * (1 - u) * (1 - v) + s(xi + 1, yi) * u * (1 - v) + s(xi, yi + 1) * (1 - u) * v + s(xi + 1, yi + 1) * u * v;
+}
+function campo(x, y) { return ruido(x * .9, y * .9) * .65 + ruido(x * 2.1 + 7, y * 2.1) * .35; }
+let topoT = 0;
+function desenhaTopo() {
+  const d = Math.min(2, devicePixelRatio || 1), W = innerWidth, H = innerHeight;
+  if (tl.width !== Math.round(W * d) || tl.height !== Math.round(H * d)) { tl.width = W * d; tl.height = H * d; }
+  tg.setTransform(d, 0, 0, d, 0, 0); tg.clearRect(0, 0, W, H);
+  const cor = { claro: "rgba(20,20,20,.10)", escuro: "rgba(163,54,73,.13)", grafite: "rgba(163,54,73,.10)", marrom: "rgba(163,54,73,.14)", laranja: "rgba(249,237,216,.07)" }[document.body.dataset.tema] || "rgba(0,0,0,.1)";
+  tg.strokeStyle = cor; tg.lineWidth = 1;
+  const passo = 14, cols = Math.ceil(W / passo) + 1, lin = Math.ceil(H / passo) + 1, esc = 1 / 260, v = [];
+  for (let j = 0; j < lin; j++) for (let i = 0; i < cols; i++) v[j * cols + i] = campo(i * passo * esc + topoT * .018, j * passo * esc + topoT * .011) + .05 * Math.sin(topoT * .35 + i * .05 + j * .04);
+  tg.beginPath();
+  for (let nivel = .2; nivel < .9; nivel += .07) for (let j = 0; j < lin - 1; j++) for (let i = 0; i < cols - 1; i++) {
+    const a = v[j * cols + i], b = v[j * cols + i + 1], c = v[(j + 1) * cols + i + 1], e = v[(j + 1) * cols + i];
+    const x = i * passo, y = j * passo, p = [];
+    const k = (p1, p2, q1, q2, ax, ay, bx, by) => { if ((p1 < nivel) !== (p2 < nivel)) { const t = (nivel - p1) / (p2 - p1); p.push([ax + (bx - ax) * t, ay + (by - ay) * t]); } };
+    k(a, b, 0, 0, x, y, x + passo, y); k(b, c, 0, 0, x + passo, y, x + passo, y + passo); k(c, e, 0, 0, x + passo, y + passo, x, y + passo); k(e, a, 0, 0, x, y + passo, x, y);
+    if (p.length >= 2) { tg.moveTo(p[0][0], p[0][1]); tg.lineTo(p[1][0], p[1][1]); if (p.length === 4) { tg.moveTo(p[2][0], p[2][1]); tg.lineTo(p[3][0], p[3][1]); } }
+  }
+  tg.stroke();
+}
+// as linhas andam devagar, como relevo vivo (redesenha a ~30 quadros por segundo)
+let topoQ = 0; gsap.ticker.add((t, dt) => { topoT += dt / 1000; if (++topoQ % 2 === 0) desenhaTopo(); });
+desenhaTopo(); let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { desenhaTopo(); montaRaiox(); }, 200); });
+
+// ABERTURA: a mão com o iPhone laranja; o mouse abre uma bolha que revela a mesma cena em raio-x (as duas fotos são do mesmo enquadramento)
+const rx = document.getElementById("raiox"), rg = rx.getContext("2d"), foto = new Image(), fotoRx = new Image();
+foto.src = "midia/abertura/iphone-mao-bordeaux.jpg?v=3"; fotoRx.src = "midia/abertura/iphone-raiox2.jpg";   // rodada 29: raio-x com fundo escuro de pinceladas (o antigo é iphone-raiox.jpg)
+let base, raio;
+function montaRaiox() {
+  if (!VERSAO_B) return montaRaioxA();
+  if (!fotoRx.naturalWidth || !maoB.naturalWidth || !fundoB.naturalWidth) return;
+  // BW-15 (pedido dele, 10/11): sem o fundo roxo e sem o TVF gigante. Fundo = o mesmo cinza grafitado do carregamento
+  // (a tela de carregar desfoca e a abertura já está no mesmo fundo), "BLACK WEEK" em dourado atrás, a mão com o iPhone
+  // menor (para caber os prêmios do lado) e o raio-x só na mão e no celular.
+  const d = Math.min(2, devicePixelRatio || 1), W = rx.clientWidth, H = rx.clientHeight, cel = W < 700;
+  rx.width = W * d; rx.height = H * d; rg.setTransform(d, 0, 0, d, 0, 0);
+  const s0 = Math.max(W / maoB.naturalWidth, H / maoB.naturalHeight), s = s0 * (cel ? .5 : .78);
+  const w = maoB.naturalWidth * s, h = maoB.naturalHeight * s, x = (W - w) / 2, y = H - h + H * (cel ? .07 : .03);
+  const tela = () => { const c = document.createElement("canvas"); c.width = W * d; c.height = H * d; const g = c.getContext("2d"); g.scale(d, d); g.imageSmoothingQuality = "high"; return [c, g]; };
+  const fundo = g => {
+    const fs = Math.max(W / fundoB.naturalWidth, H / fundoB.naturalHeight), fw = fundoB.naturalWidth * fs, fh = fundoB.naturalHeight * fs;
+    g.drawImage(fundoB, (W - fw) / 2, (H - fh) / 2, fw, fh);
+    g.fillStyle = "rgba(11,11,12,.42)"; g.fillRect(0, 0, W, H);
+    const v = g.createRadialGradient(W / 2, H * .55, 0, W / 2, H * .55, Math.max(W, H) * .72);
+    v.addColorStop(0, "rgba(11,11,12,.05)"); v.addColorStop(1, "rgba(11,11,12,.82)"); g.fillStyle = v; g.fillRect(0, 0, W, H);
+  };
+  const linhas = cel ? ["BLACK", "WEEK"] : ["BLACK WEEK"];
+  const titulo = g => {
+    g.save(); g.textAlign = "center"; g.textBaseline = "alphabetic";
+    let tam = cel ? W * .5 : H * .34; g.font = `${tam}px Burbank, Impact, sans-serif`;
+    const maior = Math.max(...linhas.map(l => g.measureText(l).width)), lim = W * (cel ? .7 : .9);
+    if (maior > lim) { tam *= lim / maior; g.font = `${tam}px Burbank, Impact, sans-serif`; }
+    const alt = tam * .74, topo = H * (cel ? .085 : .085), passo = tam * .82;
+    linhas.forEach((l, i) => {
+      const yb = topo + alt + i * passo, ouro = g.createLinearGradient(0, yb - alt, 0, yb);
+      ouro.addColorStop(0, "#FFF4CF"); ouro.addColorStop(.32, "#FBCB5C"); ouro.addColorStop(.62, "#E8961C"); ouro.addColorStop(1, "#8F4508");
+      g.shadowColor = "rgba(255,168,48,.38)"; g.shadowBlur = 40; g.fillStyle = ouro; g.fillText(l, W / 2, yb);
+      g.shadowBlur = 0; g.globalAlpha = .3; g.fillStyle = "rgba(255,255,255,.55)"; g.fillText(l, W / 2, yb); g.globalAlpha = 1;
+    });
+    g.restore();
+    titD = W / 2 + Math.min(maior, lim) / 2; titT = topo;
+    return topo + alt + (linhas.length - 1) * passo;   // pé do título
+  };
+  let pe = 0, titD = 0, titT = 0;
+  // BW-20 (pedido dele): o fundo principal é CINZA LISO; o grafitado só aparece dentro da máscara do mouse, junto com o raio-x
+  const liso = g => { const v = g.createRadialGradient(W / 2, H * .5, 0, W / 2, H * .5, Math.max(W, H) * .75);
+    v.addColorStop(0, "#2c2c2e"); v.addColorStop(.55, "#1d1d1f"); v.addColorStop(1, "#111112"); g.fillStyle = v; g.fillRect(0, 0, W, H); };
+  const [cb, gb] = tela(); liso(gb); pe = titulo(gb); gb.drawImage(maoB, x, y, w, h);
+  const [cr, gr] = tela(); fundo(gr); titulo(gr);
+  const [cx, gx] = tela(); gx.drawImage(fotoRx, x, y, w, h); gx.globalCompositeOperation = "destination-in"; gx.drawImage(maoB, x, y, w, h);
+  gr.drawImage(cx, 0, 0, W, H);
+  base = cb; raio = cr;
+  // onde ficam o celular e o pé do título, para os prêmios e a legenda do iPhone se posicionarem em volta
+  const abB = document.querySelector(".abertura");
+  abB.style.setProperty("--pe", pe + "px"); abB.style.setProperty("--cel-x", (x + w * .66) + "px"); abB.style.setProperty("--cel-y", (y + h * .2) + "px");
+  abB.style.setProperty("--cel-e", (x + w * .34) + "px");
+  abB.style.setProperty("--tit-d", titD + "px"); abB.style.setProperty("--tit-t", titT + "px");
+}
+function montaRaioxA() {
+  if (!foto.naturalWidth || !fotoRx.naturalWidth) return;
+  const d = Math.min(2, devicePixelRatio || 1), W = rx.clientWidth, H = rx.clientHeight;
+  rx.width = W * d; rx.height = H * d; rg.setTransform(d, 0, 0, d, 0, 0);
+  const s = Math.max(W / foto.naturalWidth, H / foto.naturalHeight), w = foto.naturalWidth * s, h = foto.naturalHeight * s;
+  const x = (W - w) / 2, y = (H - h) / 2 - (W < 700 ? H * .06 : 0);
+  const pinta = img => { const c = document.createElement("canvas"); c.width = W * d; c.height = H * d; const g = c.getContext("2d"); g.scale(d, d); g.imageSmoothingQuality = "high"; g.drawImage(img, x, y, w, h); return c; };
+  base = pinta(foto); raio = pinta(fotoRx);
+}
+const fundoB = new Image();
+// A/B da abertura (rodada 52/53): B é o padrão (TVF gigante atrás do celular). ?a na URL = versão A antiga.
+const VERSAO_B = !new URLSearchParams(location.search).has("a");
+const TVF = { w: .9, y: .11, celW: .92, celY: .095, cor: "#F9EDD8", opac: .96 };
+const maoB = new Image();
+// letras T V F do logo oficial em vetor (caixa 803×205 = mesmas medidas do logo.png sem a etiqueta ProRes); cópia em midia/abertura/tvf-letras.svg
+const TVF_LETRAS = new Path2D("M-0.12,0.00L4.00,-0.36L260.00,-0.30L262.00,0.97L263.40,3.00L264.47,6.00L267.26,11.00L278.65,35.00L290.34,58.00L291.89,62.00L291.69,63.00L291.43,64.00L290.00,65.38L288.00,65.69L181.00,65.61L174.00,65.65L173.35,66.00L172.78,67.00L172.75,70.00L172.78,203.00L172.00,203.68L105.00,203.64L104.33,203.00L104.25,201.00L104.00,66.25L103.00,65.61L0.00,65.48L-0.43,64.00L-0.43,1.00ZM275.53,0.00L277.00,-0.42L348.00,-0.43L351.00,-0.41L351.60,0.00L354.40,5.00L375.21,48.00L379.62,58.00L384.37,67.00L384.49,68.00L410.47,122.00L419.46,140.00L421.00,141.12L423.15,139.00L451.78,79.00L460.45,62.00L489.88,1.00L491.00,-0.35L566.00,-0.43L567.03,0.00L567.82,2.00L538.55,61.00L518.37,103.00L476.43,187.00L471.40,198.00L469.46,201.00L466.00,203.37L464.00,203.65L378.00,203.69L374.31,203.00L373.00,202.29L370.89,200.00L274.61,3.00L274.59,1.00ZM599.10,0.00L603.00,-0.43L801.00,-0.40L801.73,1.00L801.71,63.00L801.61,65.00L801.00,65.55L636.00,65.67L632.00,67.53L630.73,69.00L629.63,72.00L629.63,91.00L631.00,92.06L639.00,92.12L801.00,92.18L801.72,93.00L801.60,141.00L801.00,141.55L799.00,141.60L631.00,141.60L630.08,142.00L629.66,143.00L629.62,202.00L629.59,203.00L629.00,203.59L563.00,203.45L562.57,203.00L562.57,45.00L563.62,35.00L566.75,26.00L568.87,22.00L573.00,16.14L578.00,10.63L583.00,6.70L588.00,3.70L593.00,1.58Z");
+if (!VERSAO_B) document.documentElement.classList.add("versao-a");
+else document.querySelector(".barra .logo").classList.add("escondido");   // na 1ª tela o TVF grande já é a marca
+const pronto = () => { if (foto.complete && fotoRx.complete && (!VERSAO_B || (maoB.complete && fundoB.complete))) montaRaiox(); };
+fundoB.onload = pronto; fundoB.src = "midia/abertura/fundo-carregando.jpg";
+(document.fonts ? document.fonts.ready : Promise.resolve()).then(() => montaRaiox());   // o título usa a Burbank
+if (VERSAO_B) { maoB.onload = pronto; maoB.src = "midia/abertura/iphone-mao-recorte-bordeaux.webp?v=3"; }
+foto.onload = pronto; fotoRx.onload = pronto; pronto();
+// máscara líquida: só existe enquanto o mouse mexe. Cada movimento solta gotas com inércia (herdam a velocidade do mouse,
+// escorregam e encolhem); as gotas se fundem como metaballs numa máscara de baixa resolução, que depois é suavizada.
+// Mouse parado = as gotas somem e fica só a foto principal.
+const ab = document.querySelector(".abertura"), RES = 2;   // máscara a 1/2 da tela
+let cg = new Float32Array(1), masc = null;
+const gotas = [], mk = document.createElement("canvas"), mg = mk.getContext("2d", { willReadFrequently: true }),
+      tmp = document.createElement("canvas"), tg2 = tmp.getContext("2d");
+let ux = null, uy = null, uvx = 0, uvy = 0;
+function solta(x, y) {
+  if (ux === null) { ux = x; uy = y; return; }
+  const dx = x - ux, dy = y - uy, d = Math.hypot(dx, dy); if (d < 1) return;
+  uvx += (dx - uvx) * .5; uvy += (dy - uvy) * .5;
+  const vel = Math.hypot(uvx, uvy), n = Math.min(14, Math.ceil(d / 7));
+  for (let i = 1; i <= n; i++) {
+    const t = i / n;
+    gotas.push({ x: ux + dx * t + (Math.random() - .5) * 6, y: uy + dy * t + (Math.random() - .5) * 6,
+      vx: uvx * (.08 + Math.random() * .12) + (Math.random() - .5) * 1.2, vy: uvy * (.08 + Math.random() * .12) + (Math.random() - .5) * 1.2,
+      r: 16 + Math.min(30, vel * .9) * (.6 + Math.random() * .5), vida: 1, cai: .016 + Math.random() * .014 });
+  }
+  if (gotas.length > 200) gotas.splice(0, gotas.length - 200);
+  ux = x; uy = y;
+}
+let encolheu = false;
+ab.addEventListener("pointermove", e => { if (encolheu || e.pointerType !== "mouse") return; const r = rx.getBoundingClientRect(); solta(e.clientX - r.left, e.clientY - r.top); });
+ab.addEventListener("pointerleave", () => { ux = uy = null; });
+// rodada 59 — celular: o dedo rolava a página, o navegador cancelava o ponteiro e o raio-x sumia em pontinhos.
+// Agora: eventos de toque (continuam chegando mesmo rolando), deslizar de lado não rola a página (touch-action pan-y no CSS),
+// tocar solta um respingo de raio-x, e sozinho, de tempos em tempos, um "dedo invisível" passa pelo celular para mostrar o efeito.
+let ultimoToque = 0;
+const ponto = t => { const r = rx.getBoundingClientRect(); return [t.clientX - r.left, t.clientY - r.top]; };
+function respingo(x, y) {
+  for (let i = 0; i < 16; i++) { const a = Math.random() * Math.PI * 2, v = .8 + Math.random() * 2.6;
+    gotas.push({ x: x + Math.cos(a) * 6, y: y + Math.sin(a) * 6, vx: Math.cos(a) * v, vy: Math.sin(a) * v, r: 20 + Math.random() * 20, vida: 1, cai: .011 + Math.random() * .01 }); }
+}
+ab.addEventListener("touchstart", e => { if (encolheu) return; ux = uy = null; respingo(...ponto(e.touches[0])); ultimoToque = Date.now(); }, { passive: true });
+ab.addEventListener("touchmove", e => { if (encolheu) return; solta(...ponto(e.touches[0])); ultimoToque = Date.now(); }, { passive: true });
+ab.addEventListener("touchend", () => { ux = uy = null; }, { passive: true });
+function demoRaiox() {   // o dedo invisível: uma curva de baixo-esquerda para cima-direita, por cima do celular
+  if (encolheu || scrollY > 10 || document.hidden) return;
+  const W = rx.clientWidth, H = rx.clientHeight, p = { t: 0 }; ux = uy = null;
+  gsap.to(p, { t: 1, duration: 1.7, ease: "power1.inOut", onUpdate: () => { if (encolheu) return;
+      const t = p.t; solta(W * (.12 + .76 * t), H * (.66 - .32 * t + .07 * Math.sin(t * Math.PI * 2))); },
+    onComplete: () => { ux = uy = null; } });
+}
+gsap.ticker.add(() => {
+  if (!base) return; const W = rx.clientWidth, H = rx.clientHeight;
+  if (!W || !H || !rx.width || !rx.height || !base.width || !raio.width) return;   // BW-11: na troca de tamanho da tela o quadro fica 0 e o drawImage quebrava
+  rg.clearRect(0, 0, W, H); rg.drawImage(base, 0, 0, W, H);
+  // física das gotas: inércia, atrito, um pouco de gravidade, encolhem e somem
+  const k = Math.min(4, gsap.ticker.deltaRatio(60));   // tudo medido em tempo real (60 fps de referência), não em quadros
+  for (let i = gotas.length - 1; i >= 0; i--) {
+    const g = gotas[i]; g.x += g.vx * k; g.y += g.vy * k; g.vx *= .93 ** k; g.vy = g.vy * .93 ** k + .02 * k; g.vida -= g.cai * k; g.r *= .992 ** k;
+    if (g.vida <= 0) gotas.splice(i, 1);
+  }
+  if (!gotas.length) return;
+  // cg das gotas calculado em número decimal (sem os degraus de 8 bits do canvas, que serrilhavam a borda)
+  const mw = Math.ceil(W / RES), mh = Math.ceil(H / RES), n = mw * mh;
+  if (mk.width !== mw || mk.height !== mh) { mk.width = mw; mk.height = mh; cg = new Float32Array(n); masc = mg.createImageData(mw, mh); }
+  cg.fill(0);
+  for (const g of gotas) {   // núcleo suave (1 - d²/R²)²: soma de gotas = uma mancha só, sem emenda
+    const R = g.r * (.35 + .65 * g.vida) / RES * 1.8, R2 = R * R, peso = .75 * g.vida + .1, cx = g.x / RES, cy = g.y / RES;
+    const x0 = Math.max(0, Math.floor(cx - R)), x1 = Math.min(mw - 1, Math.ceil(cx + R)), y0 = Math.max(0, Math.floor(cy - R)), y1 = Math.min(mh - 1, Math.ceil(cy + R));
+    for (let y = y0; y <= y1; y++) { const dy = y + .5 - cy, linha = y * mw;
+      for (let x = x0; x <= x1; x++) { const dx = x + .5 - cx, q = 1 - (dx * dx + dy * dy) / R2; if (q > 0) cg[linha + x] += peso * q * q; } }
+  }
+  // borda: transição de ~1,5 pixel da máscara, calculada pela inclinação do cg → contorno liso, cara de vetor
+  const dd = masc.data;
+  for (let y = 0; y < mh; y++) for (let x = 0; x < mw; x++) {
+    const i = y * mw + x, v = cg[i];
+    const gx = (cg[i + (x < mw - 1 ? 1 : 0)] - cg[i - (x > 0 ? 1 : 0)]) * .5, gy = (cg[i + (y < mh - 1 ? mw : 0)] - cg[i - (y > 0 ? mw : 0)]) * .5;
+    const inc = Math.hypot(gx, gy) || 1e-4, dist = (v - .42) / inc;   // distância (em pixels) até o contorno
+    dd[i * 4 + 3] = 255 * Math.min(1, Math.max(0, dist * .7 + .5));
+  }
+  mg.putImageData(masc, 0, 0);
+  if (tmp.width !== rx.width || tmp.height !== rx.height) { tmp.width = rx.width; tmp.height = rx.height; }
+  tg2.setTransform(1, 0, 0, 1, 0, 0); tg2.globalCompositeOperation = "source-over"; tg2.clearRect(0, 0, tmp.width, tmp.height);
+  tg2.drawImage(raio, 0, 0); tg2.globalCompositeOperation = "destination-in";
+  tg2.imageSmoothingEnabled = true; tg2.imageSmoothingQuality = "high"; tg2.drawImage(mk, 0, 0, tmp.width, tmp.height);
+  rg.drawImage(tmp, 0, 0, W, H);
+});
+
+// carregamento: contador 0 → 100 e cortina sobe; depois o título da abertura entra letra a letra
+function quebraLetras(el) {   // letra por letra, mas cada palavra fica inteira (não quebra no meio)
+  el.innerHTML = el.textContent.split(" ").map(p => `<span style="white-space:nowrap;display:inline-block">${[...p].map(c => `<span class="l">${c}</span>`).join("")}</span>`).join(" ");
+}
+document.querySelectorAll(".letras").forEach(quebraLetras);
+const cont = { n: 0 }, el = document.getElementById("cont");
+// saída: o logo vira janela para a abertura e a câmera "entra" nele (zoom no traço do V, com desfoque)
+const car = document.getElementById("carrega"), logoC = document.getElementById("logo-c"), PX = .423, PY = .506, PROP = 306 / 803;
+const jan = { w: 0 }; let ancora = null;
+function pintaJanela() {
+  const h = jan.w * PROP, x = ancora.x - PX * jan.w, y = ancora.y - PY * h, v = `100% 100%, ${jan.w}px ${h}px`, p = `0 0, ${x}px ${y}px`;
+  car.style.webkitMaskSize = v; car.style.maskSize = v; car.style.webkitMaskPosition = p; car.style.maskPosition = p;
+}
+// a máscara já fica ligada desde o começo (com o buraco fora da tela): o navegador carrega o logo da máscara antes do 100%
+// e não pisca laranja na troca
+// BW-9: carregamento sem o logo (pedido dele, 09/11): conta até 100%, a tela cinza desfoca e some
+// física de lente: o logo vem para perto da câmera e sai de foco; a mão (longe, o assunto) entra em foco
+gsap.set("#raiox", { scale: .94, filter: "sepia(0) saturate(1) hue-rotate(0deg) brightness(1) contrast(1) blur(4px)", clipPath: "inset(0% 0% 0% 0% round 0px)" });
+let w0 = 1;
+function zoomLogo() {   // o logo laranja cresce junto com o buraco e some no caminho: cor → janela sem parada
+  pintaJanela(); logoC.style.transform = `translate(-50%,-50%) scale(${jan.w / w0})`;
+}
+gsap.timeline()
+  .to(cont, { n: 100, duration: 1.3, ease: "power2.inOut", onUpdate: () => el.textContent = Math.round(cont.n) })
+  .to("#cont", { opacity: 0, y: -10, duration: .3, ease: "power2.in" }, "+=.15")
+  .to(car, { opacity: 0, scale: 1.06, filter: "blur(30px)", duration: .9, ease: "power3.in" }, "<.1")
+  .to("#raiox", { scale: 1, filter: "sepia(0) saturate(1) hue-rotate(0deg) brightness(1) contrast(1) blur(0px)", duration: 1.1, ease: "power3.out" }, "<.25")
+  .set(car, { display: "none" }, "<.7")
+  .from(".barra", { opacity: 0, y: 14, duration: .9, ease: expo }, "<")
+  .from(".abertura h1.frase-b", { opacity: 0, y: 18, duration: .9, ease: expo }, "<.12")
+  .from(".premios-1 .p1", { opacity: 0, y: 60, rotate: 0, duration: 1.2, ease: expo, stagger: .12 }, "<.05")
+  .from(".selo-data", { opacity: 0, y: 22, duration: 1, ease: expo }, "<.1")
+  .call(() => { if (!toque) return; demoRaiox();   // celular: mostra o raio-x logo depois do carregamento e repete se ninguém mexer
+    setInterval(() => { if (Date.now() - ultimoToque > 5000) demoRaiox(); }, 7000); }, null, ">-.3");
+
+// 2ª tela (como o site de referência): a abertura fica presa; a foto encolhe até um quadro no centro, ganha um tom
+// cinza sem cor e de pouco contraste (pedido dele, rodada 26), o fundo vai para um marrom entre o laranja e o preto, e a assinatura TVF se escreve por cima
+const tracos = [...document.querySelectorAll("#m-tinta path")];
+tracos.forEach(p => { const c = +p.dataset.comp + 2; p.style.strokeDasharray = c; p.style.strokeDashoffset = c; });
+const celularPeq = () => innerWidth < 860;
+const tl2 = gsap.timeline({ scrollTrigger: { trigger: ".abertura", start: "top top", end: "+=380%", pin: true, scrub: .7, invalidateOnRefresh: true,
+  onUpdate: s => { encolheu = s.progress > .02; if (encolheu) gotas.length = 0; } } });
+// rodada 48: ponto de partida explícito (foto nítida, tamanho cheio). Com .to(), o GSAP gravava como início o estado do
+// carregamento (desfocada, 94%) e, ao voltar ao topo, a abertura ficava desfocada. immediateRender:false não atrapalha a entrada.
+tl2.fromTo("#raiox", { scale: 1, x: 0, y: 0, opacity: 1, clipPath: "inset(0px 0px 0px 0px round 0px)", filter: "sepia(0) saturate(1) hue-rotate(0deg) brightness(1) contrast(1) blur(0px)" },
+      { scale: () => celularPeq() ? .42 : .28, clipPath: "inset(0px 0px 0px 0px round 10px)",
+      filter: "sepia(0) saturate(0) hue-rotate(0deg) brightness(.62) contrast(.85) blur(0px)", duration: .45, ease: "power2.inOut", immediateRender: false }, 0)
+   .fromTo(".abertura h1.frase-b,.selo-data,.premios-1", { opacity: 1 }, { opacity: 0, duration: .06, ease: "power1.in", immediateRender: false }, 0)
+   .to(".brilho2,.faixas", { opacity: 1, duration: .3, ease: "power1.out" }, .12)
+   // as duas linhas atravessam a tela de borda a borda: a de cima para a esquerda, a de baixo para a direita
+   .fromTo(".f1 .trilha", { xPercent: 0 }, { xPercent: -50, duration: 1.06, ease: "none" }, 0)
+   .fromTo(".f2 .trilha", { xPercent: -50 }, { xPercent: 0, duration: 1.06, ease: "none" }, 0);
+let t0 = .38; const total = tracos.reduce((a, p) => a + +p.dataset.comp, 0);
+tracos.forEach(p => {   // cada traço leva o tempo do seu comprimento; os traços se emendam com um leve cruzamento
+  const d = .58 * (+p.dataset.comp / total);
+  tl2.to(p, { strokeDashoffset: 0, duration: d, ease: "power1.inOut" }, t0); t0 += d * .82;
+});
+tl2.to({}, { duration: .08 });   // respiro depois da assinatura
+
+// BW-10 (pedido dele, 09/11): a foto encolhe até o tamanho e o lugar do vídeo do Blackmagic e vira ele por transparência;
+// os textos do "Blackmagic na prática" entram junto. Conta feita relativa à abertura (o canvas ocupa a abertura inteira).
+const abEl = document.querySelector(".abertura"), pvEl = document.querySelector(".pr-video");
+function alvoVideo() {
+  const a = abEl.getBoundingClientRect(), r = pvEl.getBoundingClientRect(), W = a.width, H = a.height, w = r.width, h = r.height;
+  const s = Math.max(w / W, h / H);
+  return { s, x: r.left - a.left + w / 2 - W / 2, y: r.top - a.top + h / 2 - H / 2, ix: (W - w / s) / 2, iy: (H - h / s) / 2, rr: 10 / s };
+}
+const T3 = tl2.duration();
+tl2.to(".assina,.faixas", { opacity: 0, duration: .12, ease: "power1.in" }, T3)
+   .to("#raiox", { x: () => alvoVideo().x, y: () => alvoVideo().y, scale: () => alvoVideo().s,
+      clipPath: () => { const v = alvoVideo(); return `inset(${v.iy}px ${v.ix}px ${v.iy}px ${v.ix}px round ${v.rr}px)`; },
+      filter: "sepia(0) saturate(1) hue-rotate(0deg) brightness(1) contrast(1) blur(0px)", duration: .36, ease: "power2.inOut" }, T3 + .04)
+   .to(".pr-video", { opacity: 1, duration: .16, ease: "none" }, ">-.06")
+   .to("#raiox", { opacity: 0, duration: .16, ease: "none" }, "<")
+   .fromTo(".pr-i", { opacity: 0, y: 28, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", stagger: .04, duration: .2, ease: "power2.out", immediateRender: false }, "<.04")
+   .to({}, { duration: .22 });   // segura a cena com o vídeo rodando antes de soltar a tela
+
+
+// versão B: o logo pequeno aparece quando a foto começa a encolher (antes disso o TVF grande é a marca)
+if (VERSAO_B) ScrollTrigger.create({ start: 60, end: "max", onEnter: () => document.querySelector(".barra .logo").classList.remove("escondido"),
+  onLeaveBack: () => document.querySelector(".barra .logo").classList.add("escondido") });
+// botão do WhatsApp: aparece depois da 1ª tela e some no rodapé (lá o contato já está na página)
+ScrollTrigger.create({ start: () => innerHeight * .9, end: "max", onToggle: s => document.getElementById("zap").classList.toggle("vivo", s.isActive) });
+ScrollTrigger.create({ trigger: "footer", start: "top 85%", refreshPriority: -1, onEnter: () => document.getElementById("zap").classList.add("fora"), onLeaveBack: () => document.getElementById("zap").classList.remove("fora") });
+// o logo do topo só fica nas duas primeiras telas: sobe e some quando começa o texto do manifesto
+ScrollTrigger.create({ trigger: ".modulos", start: "top 85%", refreshPriority: -1,
+  onEnter: () => document.querySelector(".barra .logo").classList.add("sobe"), onLeaveBack: () => document.querySelector(".barra .logo").classList.remove("sobe") });
+// Black Week: sem galeria e sem o antes/depois do REC (pedido dele, 05/11) — depois do manifesto vem direto a foto do setup
+
+// cartões: entram em cascata; no toque, abrem a lista
+gsap.utils.toArray(".sobe").forEach(s => gsap.to(s, { opacity: 1, y: 0, duration: 1.2, ease: expo, scrollTrigger: { trigger: s, start: "top 90%" } }));
+document.querySelectorAll(".cartao").forEach(c => c.addEventListener("click", () => { c.classList.toggle("aberto"); if (celularPeq()) setTimeout(() => ScrollTrigger.refresh(), 60); }));   // no celular o card aberto muda a altura da página
+// cartões de vidro: contorno em SVG no formato da pastinha (cantos de 14 px, canto de baixo cortado em 64 px) e um brilho
+// que corre pelo contorno conforme o cartão passa na tela (cada coluna um pouco atrasada)
+const NS = "http://www.w3.org/2000/svg";
+document.querySelectorAll(".cartao").forEach((c, i) => {
+  c.insertAdjacentHTML("afterbegin", `<svg class="contorno" aria-hidden="true"><defs><linearGradient id="br${i}" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".42" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".95"/>
+    <stop offset=".58" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+    <path class="c-base"/><path class="c-brilho" stroke="url(#br${i})"/></svg>`);
+  const svg = c.querySelector(".contorno"), grad = svg.querySelector("linearGradient"), paths = svg.querySelectorAll("path");
+  let w = 1, h = 1, p = 0;
+  const forma = () => { const r = 14, k = 64, e = .5;
+    return `M${r + e},${e} H${w - r - e} A${r},${r} 0 0 1 ${w - e},${r + e} V${h - k - .5} L${w - k - .5},${h - e} H${r + e} A${r},${r} 0 0 1 ${e},${h - r - e} V${r + e} A${r},${r} 0 0 1 ${r + e},${e} Z`; };
+  const brilho = () => {   // p 0 → 1: a faixa entra pela esquerda e sai pela direita, na diagonal
+    const x = -w * .7 + p * w * 2.4;
+    grad.setAttribute("x1", x - w * .5); grad.setAttribute("y1", 0); grad.setAttribute("x2", x + w * .1); grad.setAttribute("y2", h);
+  };
+  new ResizeObserver(() => { w = c.clientWidth; h = c.clientHeight; svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
+    paths.forEach(pt => pt.setAttribute("d", forma())); brilho(); }).observe(c);
+  ScrollTrigger.create({ trigger: c, start: "top bottom", end: "bottom top",
+    onUpdate: s => { p = gsap.utils.clamp(0, 1, s.progress * 1.25 - .12 - (i % 3) * .06); brilho(); } });
+});
+if (!toque) document.querySelectorAll(".cartao").forEach(c => {   // cartão inclina seguindo o mouse
+  c.addEventListener("pointermove", e => { const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+    const k = c.classList.contains("largo") ? 2.5 : 8;
+    gsap.to(c, { rotateY: x * k, rotateX: -y * k, transformPerspective: 900, duration: .8, ease: expo }); });
+  c.addEventListener("pointerleave", () => gsap.to(c, { rotateY: 0, rotateX: 0, duration: 1.2, ease: expo }));
+});
+
+// módulo 9: palavra em pontos com física (a mesma retícula da primeira versão do site). Cada ponto é uma mola presa à sua
+// casa; o mouse empurra e arrasta, os pontos esticam na direção do movimento e esquentam do creme ao laranja; o clique
+// (ou toque) solta uma onda. Parado, quase não aparece. Só desenha enquanto o cartão está na tela.
+// BW-11: a mesma física serve ao título do Storyflow (pedido dele, 10/11); lá o fundo é claro, então os pontos vão do
+// grafite ao bordô e ficam visíveis parados (repouso alto), para a palavra ler sem o mouse.
+function palavraPontos(card, cv, op) {
+  if (!card || !cv) return;
+  const g = cv.getContext("2d"), o = Object.assign({ texto: "AUTORIDADE", colunas: 170, passoMin: 6, ponto: .3, raio: 9, forca: .45, repouso: .2,
+    de: [249, 237, 216], para: [254, 108, 0] }, op);
+  let W, H, pontos = [], mx = -1e4, my = -1e4, ondas = [], cvx = 0, cvy = 0, pmx = -1e4, pmy = -1e4, vivo = false;
+  const PASSO = () => Math.max(W < 500 ? 4 : o.passoMin, Math.round(W / o.colunas));   // palavra longa: no celular os pontos são menores
+  function monta() {
+    const d0 = Math.min(2, devicePixelRatio || 1); W = cv.clientWidth; H = cv.clientHeight; if (!W || !H) return;
+    cv.width = W * d0; cv.height = H * d0; g.setTransform(d0, 0, 0, d0, 0, 0);
+    const c = document.createElement("canvas"), cg = c.getContext("2d"); c.width = W; c.height = H;
+    let tam = H * .95; cg.font = `${tam}px Burbank, Impact, sans-serif`;
+    const larg = cg.measureText(o.texto).width; if (larg > W * .98) { tam *= W * .98 / larg; cg.font = `${tam}px Burbank, Impact, sans-serif`; }
+    cg.fillStyle = "#fff"; cg.textBaseline = "middle"; cg.fillText(o.texto, (W - cg.measureText(o.texto).width) / 2, H * .54);
+    const d = cg.getImageData(0, 0, W, H).data, p = PASSO(); pontos = [];
+    for (let y = p / 2; y < H; y += p) for (let x = p / 2; x < W; x += p) {
+      const a = d[(Math.floor(y) * W + Math.floor(x)) * 4 + 3] / 255; if (a > .05) pontos.push({ hx: x, hy: y, x, y, vx: 0, vy: 0, a, r: 0 });
+    }
+  }
+  const [r0, g0, b0] = o.de, [r1, g1, b1] = o.para;
+  function quadro(t) {
+    if (!vivo) return;
+    g.clearRect(0, 0, W, H); const p = PASSO(), base = p * o.ponto, R = p * o.raio;
+    if (mx > -1e3 && pmx > -1e3) { cvx += ((mx - pmx) - cvx) * .35; cvy += ((my - pmy) - cvy) * .35; } else { cvx *= .8; cvy *= .8; }
+    pmx = mx; pmy = my; ondas = ondas.filter(w => t - w.t < 1600);
+    for (const q of pontos) {
+      const dx = q.x - mx, dy = q.y - my, dm = Math.hypot(dx, dy) || 1, f = dm < R ? (1 - dm / R) ** 2 : 0;
+      if (f) { q.vx += dx / dm * f * p * o.forca + cvx * f * .12; q.vy += dy / dm * f * p * o.forca + cvy * f * .12; }
+      let onda = 0;
+      for (const w of ondas) {
+        const ox = q.hx - w.x, oy = q.hy - w.y, od = Math.hypot(ox, oy) || 1, raio = (t - w.t) * .85;
+        const k = Math.max(0, 1 - Math.abs(od - raio) / (p * 3)) * (1 - (t - w.t) / 1600);
+        if (k) { q.vx += ox / od * k * p * .4; q.vy += oy / od * k * p * .4; onda += k; }
+      }
+      q.vx += (q.hx - q.x) * .06; q.vy += (q.hy - q.y) * .06; q.vx *= .84; q.vy *= .84; q.x += q.vx; q.y += q.vy;
+      const vel = Math.hypot(q.vx, q.vy), longe = Math.hypot(q.x - q.hx, q.y - q.hy);
+      const tam = Math.min(p * .95, base * q.a + f * p * .38 + onda * p * .3 + longe * .04); q.r += (tam - q.r) * .2;
+      const calor = Math.min(1, f * 1.6 + onda + longe / (p * 6));
+      g.fillStyle = `rgb(${r0 + (r1 - r0) * calor},${g0 + (g1 - g0) * calor},${b0 + (b1 - b0) * calor})`;
+      g.globalAlpha = (o.repouso + (1 - o.repouso) * Math.min(1, calor * 1.4)) * (.6 + .4 * q.a);
+      const estica = 1 + Math.min(1.4, vel * .1), r = Math.max(.4, q.r);
+      g.beginPath(); g.ellipse(q.x, q.y, r * estica, r / Math.sqrt(estica), Math.atan2(q.vy, q.vx), 0, 6.283); g.fill();
+    }
+    g.globalAlpha = 1; requestAnimationFrame(quadro);
+  }
+  const pos = e => { const r = cv.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top; };
+  card.addEventListener("pointermove", pos); card.addEventListener("pointerleave", () => { mx = my = -1e4; });
+  card.addEventListener("pointerdown", e => { pos(e); ondas.push({ x: mx, y: my, t: performance.now() }); });
+  new IntersectionObserver(es => { const v = es[0].isIntersecting; if (v && !vivo) { vivo = true; requestAnimationFrame(quadro); } else if (!v) vivo = false; }).observe(card);
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(monta);
+  new ResizeObserver(() => monta()).observe(cv);
+}
+{ const c9 = document.querySelector(".cartao.largo"); palavraPontos(c9, c9 && c9.querySelector(".pontos")); }
+{ const sf = document.querySelector("#storyflow .parte-cab"), cv = sf && sf.querySelector(".sf-titulo .pontos");
+  palavraPontos(sf, cv, { texto: "STORYFLOW", colunas: 150, ponto: .4, repouso: .9, de: [26, 22, 20], para: [163, 54, 73] });
+  if (cv && !toque) { cv.addEventListener("pointerenter", () => cur.classList.add("lente")); cv.addEventListener("pointerleave", () => cur.classList.remove("lente")); } }
+
+
+// BW-12: forma da pasta do TVF Color — corpo com cantos de 28 px e uma aba no meio do topo, com ombros em S (como a referência)
+{ const pa = document.querySelector(".pasta"), sv = pa && pa.querySelector(".pasta-forma"), pt = sv && sv.querySelector("path");
+  if (pa) new ResizeObserver(() => {
+    const T = parseFloat(getComputedStyle(pa).getPropertyValue("--aba")) || 58, w = pa.clientWidth, h = pa.clientHeight + T;
+    const R = w < 600 ? 20 : 28, tw = w < 600 ? Math.max(180, w * .46) : Math.max(340, w * .3), c = T * (w < 600 ? 1.2 : 1.7), x1 = (w - tw) / 2, x2 = x1 + tw;
+    sv.setAttribute("viewBox", `0 0 ${w} ${h}`);
+    pt.setAttribute("d", `M0,${T + R} A${R},${R} 0 0 1 ${R},${T} H${x1 - c} C${x1 - c * .45},${T} ${x1 - c * .55},0 ${x1},0 H${x2} C${x2 + c * .55},0 ${x2 + c * .45},${T} ${x2 + c},${T} H${w - R} A${R},${R} 0 0 1 ${w},${T + R} V${h - R} A${R},${R} 0 0 1 ${w - R},${h} H${R} A${R},${R} 0 0 1 0,${h - R} Z`);
+  }).observe(pa); }
+
+// BW-13: fim do Storyflow → ele fica parado (preso pelo fim, sem empurrar a página) e a pasta do TVF Color sobe por cima;
+// enquanto sobe, o Storyflow perde a opacidade e uma camada preta cresce; com a pasta tomando a tela, já está tudo preto
+{ const sf = document.querySelector("#storyflow");
+  if (sf) gsap.timeline({ scrollTrigger: { trigger: sf, start: "bottom bottom", end: () => "+=" + innerHeight, pin: true, pinSpacing: false,
+      scrub: true, invalidateOnRefresh: true } })
+    .to("#storyflow > :not(.sf-escuro)", { opacity: 0, ease: "power1.in", duration: .8 }, 0)
+    .to("#storyflow .sf-escuro", { opacity: 1, ease: "power1.inOut", duration: .82 }, 0)
+    .to({}, { duration: .18 }); }
+
+// BW-14: "combo BLACK WEEK" grande; letras sobem ao aparecer e pulam/mudam de cor no mouse (a mesma do rodapé)
+{ const t = document.getElementById("of-titulo");
+  if (t) { t.querySelectorAll(".of-l1,.of-l2").forEach(l => { l.innerHTML = l.textContent.split(" ").map(p =>
+      `<span class="pal">${[...p].map(c => `<span class="letra"><span class="li">${c}</span></span>`).join("")}</span>`).join(" "); });
+    gsap.from(t.querySelectorAll(".li"), { yPercent: 105, rotate: 6, duration: 1.1, ease: expo, stagger: .035,
+      scrollTrigger: { trigger: t, start: "top 85%" } }); } }
+// BW-14: cards do combo no estilo da galeria de capacetes do Lando Norris — escuros, desencontrados; parado mostra a
+// marca do produto, no mouse a foto (ou o vídeo do Color) toma o cartão. No celular a foto aparece quando o card chega no meio da tela.
+document.querySelectorAll(".prod").forEach(c => {
+  if (toque) new IntersectionObserver(es => es.forEach(e => c.classList.toggle("ver", e.isIntersecting)), { rootMargin: "-38% 0px -38% 0px" }).observe(c);
+  else {
+    c.addEventListener("pointerenter", () => cur.classList.add("grande"));
+    c.addEventListener("pointerleave", () => { cur.classList.remove("grande"); gsap.to(c, { rotateY: 0, rotateX: 0, duration: 1.2, ease: expo }); });
+    c.addEventListener("pointermove", e => { const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      gsap.to(c, { rotateY: x * 7, rotateX: -y * 7, transformPerspective: 1000, duration: .8, ease: expo }); });
+  }
+});
+gsap.utils.toArray(".prod").forEach((c, i) => gsap.from(c, { y: 90, opacity: 0, duration: 1.3, ease: expo, delay: i * .08, scrollTrigger: { trigger: ".trio", start: "top 85%" } }));
+
+// rodada BW-5 — o relógio da Black Week (horário de Brasília). Fases:
+//   antes  (até 10/11 20h): selo "10.11 · live de abertura"; relógio até a live
+//   bonus  (10/11 20h → 11/11 00h): selo "10.11 · bônus só até a meia-noite"; relógio DOURADO até a meia-noite
+//   oferta (11/11 → 17/11 23h59): selo "17.11 · a oferta vai até"; relógio até o fim; cartões do sorteio de equipamentos e da masterclass "encerrado"
+//   fim: "a Black Week terminou"
+// Para conferir uma fase: ?simular=2026-11-10T21:30  (data e hora de Brasília)
+// LINKS DE CHECKOUT (Kiwify) — preencher. Vazio = o botão fica na própria página.
+// combo697: se a Kiwify usar outro link depois da meia-noite, pôr aqui; vazio = usa o mesmo do combo.
+const LINKS = { combo: "https://pay.kiwify.com.br/q6TmKdC", combo697: "", prores: "", color: "", storyflow: "" };
+const prEl = document.querySelector(".preco");
+let precoAlvo = 597, precoMostrado = false;
+function precoFase(fase) {
+  const caro = fase === "oferta" || fase === "fim";
+  precoAlvo = caro ? 697 : 597;
+  if (precoMostrado) prEl.innerHTML = `<small>R$</small>${precoAlvo}`;
+  document.querySelectorAll(".js-preco").forEach(e => e.textContent = "R$ " + precoAlvo);
+  document.getElementById("parc").textContent = caro
+    ? "Separados, os três somam R$ 835. No combo você paga R$ 138 a menos."
+    : "Separados, os três somam R$ 691. No combo você paga R$ 94 a menos e ainda leva a masterclass e os sorteios.";
+  // BW-14: a masterclass só vale até 23h59 de 10/11; depois ela sai da soma (fica riscada como encerrada)
+  document.getElementById("soma-master").classList.toggle("encerrado", caro);
+  document.getElementById("soma-tot").textContent = caro ? "R$ 1.691" : "R$ 2.388";
+  document.querySelectorAll(".js-av").forEach(e => e.textContent = "R$ " + (caro ? e.dataset.depois : e.dataset.dia));
+  document.getElementById("aviso-preco").textContent = fase === "fim" ? "a Black Week terminou em 17/11"
+    : caro ? "o preço de R$ 597 terminou à meia-noite de 10/11" : "à meia-noite de 10/11 o combo sobe para R$ 697";
+  document.getElementById("parcela").textContent = caro ? "à vista ou em até 12x no cartão" : "à vista ou 12x de R$ 61,74 no cartão";
+  document.querySelectorAll("[data-link]").forEach(a => {
+    const k = a.dataset.link, url = k === "combo" && caro && LINKS.combo697 ? LINKS.combo697 : LINKS[k];
+    if (url) { a.href = url; a.target = "_blank"; a.rel = "noopener"; }
+    else if (k !== "combo") a.style.display = "none";   // BW-21: avulso sem checkout não mostra botão (o preço continua)
+  });
+}
+const LIVE = Date.parse("2026-11-10T20:00:00-03:00"), FIM_BONUS = Date.parse("2026-11-11T00:00:00-03:00"), FIM_OFERTA = Date.parse("2026-11-18T00:00:00-03:00");
+const simular = new URLSearchParams(location.search).get("simular"), desloc = simular ? Date.parse(simular + ":00-03:00") - Date.now() : 0;
+const relEl = document.querySelector(".relogio"), relT = document.getElementById("relogio-t"), contBW = document.getElementById("contagem");
+let faseAtual = "";
+function relogio() {
+  const t = Date.now() + desloc, fase = t < LIVE ? "antes" : t < FIM_BONUS ? "bonus" : t < FIM_OFERTA ? "oferta" : "fim";
+  if (fase !== faseAtual) {
+    faseAtual = fase;
+    const txt = { antes: ["a oferta abre na live de 10/11 às 20h", "10.11", "live de abertura · 20h"],
+                  bonus: ["R$ 597, equipamentos e masterclass só até 23h59", "10.11", "R$ 597 só até a meia-noite"],
+                  oferta: ["a Black Week termina em", "17.11", "a oferta vai até"],
+                  fim: ["a Black Week terminou", "17.11", "oferta encerrada"] }[fase];
+    relT.textContent = txt[0]; document.getElementById("selo-dia").textContent = txt[1]; document.getElementById("selo-sub").textContent = txt[2];
+    relEl.classList.toggle("urgente", fase === "bonus");
+    contBW.style.display = fase === "fim" ? "none" : "";
+    contBW.querySelector('[data-u="d"]').parentElement.classList.toggle("some", fase === "bonus");   // na reta final só horas, minutos e segundos
+    document.querySelectorAll(".b-prazo").forEach(c => c.classList.toggle("encerrado", fase === "oferta" || fase === "fim"));
+    precoFase(fase);
+  }
+  const alvo = { antes: LIVE, bonus: FIM_BONUS, oferta: FIM_OFERTA, fim: FIM_OFERTA }[fase], d = Math.max(0, alvo - t);
+  const u = { d: Math.floor(d / 864e5), h: Math.floor(d / 36e5) % 24, m: Math.floor(d / 6e4) % 60, s: Math.floor(d / 1e3) % 60 };
+  contBW.querySelectorAll("b").forEach(b => b.textContent = String(u[b.dataset.u]).padStart(2, "0"));
+}
+relogio(); setInterval(relogio, 1000);
+
+// preço sobe contando (até o preço da fase: 597 até 23h59 de 10/11, 697 depois)
+const pr = { n: 0 };
+ScrollTrigger.create({ trigger: ".preco", start: "top 80%", once: true, onEnter: () =>
+  gsap.to(pr, { n: precoAlvo, duration: 1.6, ease: "expo.out", onUpdate: () => prEl.innerHTML = `<small>R$</small>${Math.round(pr.n)}`,
+    onComplete: () => { precoMostrado = true; prEl.innerHTML = `<small>R$</small>${precoAlvo}`; } }) });
+
+// rodapé: letras que pulam no mouse
+const gr = document.getElementById("grande"), fino = gr.querySelector(".fino").outerHTML, resto = gr.lastChild.textContent;
+gr.innerHTML = fino + resto.split(" ").map(p => `<span style="white-space:nowrap;display:inline-block">${[...p].map(c => `<span class="letra">${c}</span>`).join("")}</span>`).join(" ");
+
+
+// vídeos só tocam quando aparecem
+const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause()), { threshold: .05 });
+document.querySelectorAll("video").forEach(v => io.observe(v));
+
+</script>
+</body>
+</html>
