@@ -714,6 +714,20 @@ footer{padding:12vh var(--g) 30px;overflow:hidden}
 .oferta .garantia svg{color:#C9780F;width:38px;height:38px}
 .oferta .garantia b{font-size:22px;background-image:linear-gradient(180deg,#F7CF66 0%,#EBA42C 42%,#BE6A10 78%,#7E3B06);-webkit-background-clip:text;background-clip:text;color:transparent}
 .oferta .garantia span{color:#7a5214;font-size:13px}
+/* BW-22 (pedido dele, 10/11): avulsos com botão de checkout bem visível (preço de Black Week; o valor é a Gabi quem acerta na Kiwify) */
+.av-tit{font-size:clamp(40px,5vw,84px);line-height:.9;margin:12px 0 0}
+.av-tit span{color:var(--laranja)}
+.combo.avulso{background:none;border:0;gap:16px;max-width:1100px;margin-top:4vh}
+.combo.avulso>div{background:#fff;border:1px solid var(--linha);border-radius:18px;padding:26px 24px 24px;display:flex;flex-direction:column;
+  box-shadow:0 24px 50px -34px rgba(20,10,10,.45);transition:transform .7s var(--expo),box-shadow .7s var(--expo)}
+.combo.avulso>div:hover{transform:translateY(-4px);box-shadow:0 30px 60px -30px rgba(20,10,10,.5)}
+.combo.avulso .av-p{font-size:clamp(46px,3.8vw,64px);margin:12px 0 20px;padding:0;background:none;display:flex;align-items:baseline;gap:12px;line-height:1}
+.combo.avulso .av-p .js-av{font-size:1em;color:var(--tx)}
+.combo.avulso .av-p s{font-size:.4em;opacity:.5;margin:0}
+.oferta .avulso a{margin-top:auto;display:flex;align-items:center;justify-content:center;gap:10px;background:var(--laranja);color:var(--creme);
+  border:0;border-radius:12px;padding:16px 18px;font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;transition:transform .6s var(--expo),background .3s}
+.oferta .avulso a:hover{transform:scale(1.03);background:#8c2c3e}
+.avulsos > p{margin-top:22px}
 /* abertura: 10.11 vira um carimbo colado no BLACK WEEK; sem o "live de abertura · 20h"; legenda do iPhone encostada no aparelho */
 .selo-data{left:auto;right:calc(100% - var(--tit-d,90vw) + .5vw);top:calc(var(--pe,30vh) - 2.2vh);bottom:auto;transform:rotate(-6deg);transform-origin:50% 50%}
 .selo-data .caixa{font-size:clamp(46px,4.6vw,86px);border-radius:clamp(12px,1.3vw,22px);background-color:transparent;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
@@ -976,11 +990,12 @@ footer{padding:12vh var(--g) 30px;overflow:hidden}
     <p class="mono">Live de abertura em 10/11 às 20h · sorteios em 18/11</p>
   </div>
   <div class="avulsos">
-    <div class="mono">prefere levar só um?</div>
+    <div class="mono">só um produto, com preço de Black Week</div>
+    <h3 class="bb av-tit">prefere levar <span>só um?</span></h3>
     <div class="combo avulso">
-      <div><span class="mono">curso</span><b>TVF ProRes</b><div class="av-p"><s>R$ 1.297</s> <span class="js-av" data-dia="497" data-depois="597">R$ 497</span></div><a data-link="prores" href="#oferta">comprar só o curso →</a></div>
-      <div><span class="mono">LUTs</span><b>TVF Color</b><div class="av-p"><s>R$ 197</s> <span class="js-av" data-dia="97" data-depois="119">R$ 97</span></div><a data-link="color" href="#oferta">comprar só o Color →</a></div>
-      <div><span class="mono">sistema</span><b>Storyflow</b><div class="av-p"><s>R$ 197</s> <span class="js-av" data-dia="97" data-depois="119">R$ 97</span></div><a data-link="storyflow" href="#oferta">comprar só o Storyflow →</a></div>
+      <div><span class="mono">curso</span><b>TVF ProRes</b><div class="av-p"><s>R$ 1.297</s> <span class="js-av" data-dia="497" data-depois="597">R$ 497</span></div><a data-link="prores" href="#oferta">Comprar o TVF ProRes <span>→</span></a></div>
+      <div><span class="mono">LUTs</span><b>TVF Color</b><div class="av-p"><s>R$ 197</s> <span class="js-av" data-dia="97" data-depois="119">R$ 97</span></div><a data-link="color" href="#oferta">Comprar o TVF Color <span>→</span></a></div>
+      <div><span class="mono">sistema</span><b>Storyflow</b><div class="av-p"><s>R$ 197</s> <span class="js-av" data-dia="97" data-depois="119">R$ 97</span></div><a data-link="storyflow" href="#oferta">Comprar o Storyflow <span>→</span></a></div>
     </div>
     <p class="mono" id="av-nota">comprar separado é pagar mais e levar menos</p>
   </div>
@@ -1494,7 +1509,7 @@ gsap.utils.toArray(".prod").forEach((c, i) => gsap.from(c, { y: 90, opacity: 0, 
 // Para conferir uma fase: ?simular=2026-11-10T21:30  (data e hora de Brasília)
 // LINKS DE CHECKOUT (Kiwify) — preencher. Vazio = o botão fica na própria página.
 // combo697: se a Kiwify usar outro link depois da meia-noite, pôr aqui; vazio = usa o mesmo do combo.
-const LINKS = { combo: "https://pay.kiwify.com.br/q6TmKdC", combo697: "", prores: "", color: "", storyflow: "" };
+const LINKS = { combo: "https://pay.kiwify.com.br/q6TmKdC", combo697: "", prores: "https://pay.kiwify.com.br/b43kYhK", color: "https://pay.kiwify.com.br/MsHASqA", storyflow: "https://pay.kiwify.com.br/fjn96y4" };   // BW-22: avulsos (10/11, links dele)
 const prEl = document.querySelector(".preco");
 let precoAlvo = 597, precoMostrado = false;
 function precoFase(fase) {
